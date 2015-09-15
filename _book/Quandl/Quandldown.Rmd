@@ -1,0 +1,216 @@
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md', fig.align = "center")
+opts_chunk$set(prompt=TRUE, comment='', results='markup')
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+
+
+# end setup chunk
+```
+
+# Downloading Data from Quandl Databases
+
+The workhorse is the `Quandl()` function.
+```{r quandlhelp, eval = FALSE}
+Quandl(code, type = c("raw", "ts", "zoo", "xts", "timeSeries"), start_date,
+  end_date, transformation = c("", "diff", "rdiff", "normalize", "cumul",
+  "rdiff_from"), collapse = c("", "daily", "weekly", "monthly", "quarterly",
+  "annual"), sort = c("desc", "asc"), meta = FALSE,
+  authcode = Quandl.auth(), ...)
+```
+
+You can start downloading data by only using the `code` argument.
+Codes can be found on the website of [Quandl](https://www.quandl.com) 
+or you can query the databases directly within `R`. (see chapter 1.4).
+Suppose we want the data for the automobile manufacturer *BMW* from Frankfurt Stock Exchange
+using Google Finance as database.
+
+```{r data}
+bmw <- Quandl("GOOG/FRA_BMW")
+```
+
+```{r data1}
+str(bmw)
+```
+
+```{r data2}
+head(bmw)
+```
+
+```{r data3}
+tail(bmw)
+```
+
+```{r data4}
+summary(bmw)
+```
+
+# Using additional arguments of `Quandl()` function
+
+The function call `Quandl("GOOG/FRA_BMW")` without any additional arguments returns a data frame
+with six columns, namely 'Date', 'Open', 'High', 'Low', 'Close' and 'Volume' for
+all available dates. Furthermore, the data frame is returned in descending order.
+Our R object `bmw` ranges from `r min(bmw[,1])` to `r max(bmw[,1])`.
+
+If you want to truncate your time series the two arguments `start_date` and `end_date`
+of the `Quandl` function can be used.
+
+In a next step, we only want to download the BMW data for 2014 and we want the ordering 
+of the data to change from descending to ascending. 
+Both arguments `start_date` and `end_date` have to be in the format 'yyyy-mm-dd'.
+
+```{r bmw2014}
+bmw_2014 <- Quandl("GOOG/FRA_BMW", start_date = "2014-01-01", end_date = "2014-12-31",
+                   sort = "asc")
+```
+
+```{r bmw20141}
+str(bmw_2014)
+```
+
+```{r bmw20142}
+head(bmw_2014)
+```
+
+Comparing both R objects `bmw` and `bmw_2014` we have reduced the observations for each 
+of the columns from `r dim(bmw)[1]` to `r dim(bmw_2014)[1]`.
+The dates we have data for range from `r min(bmw_2014[,1])` to `r max(bmw_2014[,1])`.
+
+By default, `Quandl()` returns data as class `data.frame` which is not the best
+output type when dealing with time series.
+
+`Quandl()` offers several different output classes,
+
+* data.frame
+* ts
+* zoo
+* xts
+* timeSeries,
+
+which can be chosen with `type` argument.
+
+An overview about the different classes and corresponding packages can be found in the 
+[CRAN Task View: Time Series Analysis](https://cran.r-project.org/web/views/TimeSeries.html) or
+in the pdf [Working with Financial Time Series Data in R](http://faculty.washington.edu/ezivot/econ424/Working%20with%20Time%20Series%20Data%20in%20R.pdf) written by Eric Zivot.
+
+To get an output with class `zoo` the function call would look like this:
+```{r bmwzoo}
+bmw_2014_zoo <- Quandl("GOOG/FRA_BMW", start_date = "2014-01-01", end_date = "2014-12-31",
+                   sort = "asc", type = "zoo")
+```
+
+Let's have a look at what the standard `plot` function produces for both classes.
+```{r plotcomp}
+plot(bmw_2014)
+plot(bmw_2014_zoo)
+```
+
+First call produces a scatterplot matrix whereas the columns of the data frame are plotted against each other.
+Second call returns plotted time series for each column which is more appropriate for our data.
+
+The reason for this behavior is that 'plot' function checks the classes of the objects to be visualized. 
+So under the hood for an object with class 'data.frame' the function 'plot.data.frame' from package `graphics` is used
+and for objects with class 'zoo' the 'plot.zoo' function in package `zoo`.
+
+Now we have data on a daily basis but `Quandl()` offers several more choices like,
+
+* weekly
+* monthly
+* quarterly 
+* annual,
+
+which can be achived using the `collapse` argument.
+By collapsing a daily dataset to weekly,
+you will get a sample of the original dataset where the observation for each week
+is the last data point available for that week.
+
+To download weekly data of 2014 for BMW equity from Frankfurt Stock Exchange
+the function call would be
+```{r bmwweek}
+bmw_2014_zoo_weekly <- Quandl("GOOG/FRA_BMW",
+                             start_date = "2014-01-01", end_date = "2014-12-31",
+                             sort = "asc", type = "zoo", collapse = "weekly")
+```
+
+```{r bmwweek1}
+str(bmw_2014_zoo_weekly)
+```
+
+```{r bmwweek2}
+head(bmw_2014_zoo_weekly)
+```
+
+It is also possible to apply various transformations to the data.
+
+Suppose we have a time series with time stamps $i = 0, \ldots, I$,
+where $x_0$ refers to the starting date for the API call specified by `start_date`
+and $x_I$ refers to the end point specified by `end_date`.
+
+Possible values for the `transform` argument are
+
+* none: leave the data as it is
+* diff: shows the row - on - row change; 
+  $$ 
+    x^{*}_i = x_i - x_{i-1}
+  $$
+  
+* rdiff: shows the relative row - on - row change; 
+  $$ x^{*}_i = \dfrac{(x_i - x_{i-1})}{x_{i-1}} $$
+  
+* normalize: set starting value at 100; 
+  $$ x^{*}_i = \dfrac{x_i}{x_0} \cdot 100 $$
+  
+* cumul: shows the cumulative sum; 
+  $$ x^{*}_i =  x_i + x_{i-1} + x_{i-2} + \ldots + x_0 $$
+  
+* rdiff_from: shows ratio between the latest point and an earlier point; 
+  $$ x^{*}_i = \dfrac{(x_I - x_{i})}{x_{i}} $$
+
+Furthermore, you can select single columns of the data. 
+If we want the returns of the closing prices (fourth column) of 2014 for BMW 
+we have to call the Quandl function like this
+
+```{r returnsclosing}
+bmw_2014_returns_closing <- Quandl("GOOG/FRA_BMW.4",
+                                   start_date = "2014-01-01", end_date = "2014-12-31",
+                                   sort = "asc", type = "zoo", transform = "rdiff")
+
+plot(bmw_2014_returns_closing, main = "BMW closing price returns 2014",
+     ylab = "Returns", xlab = "Date")
+summary(bmw_2014_returns_closing)
+```
+
+Finally, you can also get meta data. 
+The only thing needed to receive this information is to switch the `meta` argument 
+from **FALSE** to **TRUE**.
+
+```{r meta}
+bmw_2014_zoo_meta <- Quandl("GOOG/FRA_BMW", start_date = "2014-01-01", end_date = "2014-12-31",
+                      sort = "asc", type = "zoo", meta = TRUE)
+str(bmw_2014_zoo_meta, "meta")
+```
+
+The `meta` attribute of the object `bmw_2014_zoo_meta` is a list with 9 entries, such as frequency, name, description and so on.
+Assuming that we are interested in an extended description of BMW we can get this with
+
+```{r desc, eval = FALSE}
+attr(bmw_2014_zoo_meta,"meta")$description
+```
+
+```{r cattmp, echo = FALSE}
+tmp <- "Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that 
+focuses on the automobile and motorcycle markets. It divides its activities into the
+three main segments: Automobiles, Motorcycles and Financial Services.
+It owns three brands: BMW, MINI and Rolls-Royce. Its BMW automobile range
+encompasses the 1 Series, including three-door, five-door, coupe and convertible models;
+the 3 Series, including sedan, touring, coupe and convertible models;
+the 5 Series, available in sedan and touring models;
+the 6 Series, available as a coupe or convertible;
+the 7 Series large sedan; the Z4 roadster and coupe;
+the sports utility vehicles, X3, X5 and X6 and M models, such as M3, M5 and M6.
+It also offers cars under the MINI brand and motorcycles under the BMW brand.
+The Rolls-Royce brand offers three luxury cars, Phantom, Coupe and Ghost.
+It has producing, assembly, service and sales subsidiaries throughout the world.
+In January 2013, it sold its Husqvarna brand."
+cat(tmp)
+```
