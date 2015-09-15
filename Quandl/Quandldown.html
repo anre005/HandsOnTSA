@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Downloading Historical Data | Hands-On Time Series Analysis</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.3.3">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="../Quandl/Quandlauth.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1.3" data-basepath=".." data-revision="Tue Sep 15 2015 11:18:34 GMT+0200 (CEST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Quandl/index.html">
+            
+                
+                    <a href="../Quandl/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Quandl
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
+            
+                
+                    <a href="../Quandl/Quandlacc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Access Quandl Databases
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Quandl/Quandlauth.html">
+            
+                
+                    <a href="../Quandl/Quandlauth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Installation and Authentication
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="Quandl/Quandldown.html">
+            
+                
+                    <a href="../Quandl/Quandldown.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Downloading Historical Data
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Hands-On Time Series Analysis</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="downloading-data-from-quandl-databases">Downloading Data from Quandl Databases</h1>
+<p>The workhorse is the <code>Quandl()</code> function.</p>
+<pre><code class="lang-r">&gt; Quandl(code, type = c(<span class="hljs-string">&quot;raw&quot;</span>, <span class="hljs-string">&quot;ts&quot;</span>, <span class="hljs-string">&quot;zoo&quot;</span>, <span class="hljs-string">&quot;xts&quot;</span>, <span class="hljs-string">&quot;timeSeries&quot;</span>), start_date,
++   end_date, transformation = c(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;diff&quot;</span>, <span class="hljs-string">&quot;rdiff&quot;</span>, <span class="hljs-string">&quot;normalize&quot;</span>, <span class="hljs-string">&quot;cumul&quot;</span>,
++   <span class="hljs-string">&quot;rdiff_from&quot;</span>), collapse = c(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;daily&quot;</span>, <span class="hljs-string">&quot;weekly&quot;</span>, <span class="hljs-string">&quot;monthly&quot;</span>, <span class="hljs-string">&quot;quarterly&quot;</span>,
++   <span class="hljs-string">&quot;annual&quot;</span>), sort = c(<span class="hljs-string">&quot;desc&quot;</span>, <span class="hljs-string">&quot;asc&quot;</span>), meta = <span class="hljs-literal">FALSE</span>,
++   authcode = Quandl.auth(), <span class="hljs-keyword">...</span>)
+</code></pre>
+<p>You can start downloading data by only using the <code>code</code> argument.
+Codes can be found on the website of <a href="https://www.quandl.com" target="_blank">Quandl</a> 
+or you can query the databases directly within <code>R</code>. (see chapter 1.4).
+Suppose we want the data for the automobile manufacturer <em>BMW</em> from Frankfurt Stock Exchange
+using Google Finance as database.</p>
+<pre><code class="lang-r">&gt; bmw &lt;- Quandl(<span class="hljs-string">&quot;GOOG/FRA_BMW&quot;</span>)
+</code></pre>
+<pre><code class="lang-r">&gt; str(bmw)
+</code></pre>
+<pre><code>&apos;data.frame&apos;:    1193 obs. of  6 variables:
+ $ Date  : Date, format: &quot;2015-09-14&quot; &quot;2015-09-11&quot; ...
+ $ Open  : num  86 86.4 85 86.7 81.3 ...
+ $ High  : num  86.2 86.4 87 88.2 84.9 ...
+ $ Low   : num  85 85.1 84.6 85.4 81.2 ...
+ $ Close : num  85.5 86.1 86.5 85.4 84.2 ...
+ $ Volume: num  1897 4836 9095 11818 5177 ...
+ - attr(*, &quot;freq&quot;)= chr &quot;daily&quot;
+</code></pre><pre><code class="lang-r">&gt; head(bmw)
+</code></pre>
+<pre><code>        Date  Open  High   Low Close Volume
+1 2015-09-14 86.00 86.24 84.98 85.55   1897
+2 2015-09-11 86.40 86.40 85.10 86.07   4836
+3 2015-09-10 85.05 87.00 84.60 86.48   9095
+4 2015-09-09 86.70 88.23 85.38 85.38  11818
+5 2015-09-08 81.30 84.87 81.20 84.25   5177
+6 2015-09-07 81.10 81.40 80.66 80.74   3323
+</code></pre><pre><code class="lang-r">&gt; tail(bmw)
+</code></pre>
+<pre><code>           Date  Open  High   Low Close Volume
+1188 2011-01-10 58.90 59.26 58.43 58.56  13532
+1189 2011-01-07 59.55 60.07 58.83 59.47  15508
+1190 2011-01-06 60.00 61.02 59.70 59.83   8911
+1191 2011-01-05 60.40 60.55 58.42 60.06  21851
+1192 2011-01-04 61.44 61.57 60.09 60.77  30843
+1193 2011-01-03 59.70 61.54 59.70 61.31  19869
+</code></pre><pre><code class="lang-r">&gt; summary(bmw)
+</code></pre>
+<pre><code>      Date                 Open             High             Low        
+ Min.   :2011-01-03   Min.   :  0.00   Min.   : 46.64   Min.   : 43.56  
+ 1st Qu.:2012-02-28   1st Qu.: 61.19   1st Qu.: 61.78   1st Qu.: 60.50  
+ Median :2013-05-06   Median : 72.04   Median : 72.63   Median : 71.30  
+ Mean   :2013-05-04   Mean   : 75.42   Mean   : 76.29   Mean   : 74.54  
+ 3rd Qu.:2014-07-09   3rd Qu.: 87.61   3rd Qu.: 88.41   3rd Qu.: 86.16  
+ Max.   :2015-09-14   Max.   :122.89   Max.   :123.70   Max.   :120.22  
+                      NA&apos;s   :2        NA&apos;s   :2        NA&apos;s   :2       
+     Close            Volume      
+ Min.   : 44.94   Min.   :     0  
+ 1st Qu.: 61.28   1st Qu.:  5723  
+ Median : 71.97   Median :  9479  
+ Mean   : 75.44   Mean   : 12352  
+ 3rd Qu.: 87.27   3rd Qu.: 15211  
+ Max.   :123.00   Max.   :185389
+</code></pre><h1 id="using-additional-arguments-of-quandl-function">Using additional arguments of <code>Quandl()</code> function</h1>
+<p>The function call <code>Quandl(&quot;GOOG/FRA_BMW&quot;)</code> without any additional arguments returns a data frame
+with six columns, namely &apos;Date&apos;, &apos;Open&apos;, &apos;High&apos;, &apos;Low&apos;, &apos;Close&apos; and &apos;Volume&apos; for
+all available dates. Furthermore, the data frame is returned in descending order.
+Our R object <code>bmw</code> ranges from 2011-01-03 to 2015-09-14.</p>
+<p>If you want to truncate your time series the two arguments <code>start_date</code> and <code>end_date</code>
+of the <code>Quandl</code> function can be used.</p>
+<p>In a next step, we only want to download the BMW data for 2014 and we want the ordering 
+of the data to change from descending to ascending. 
+Both arguments <code>start_date</code> and <code>end_date</code> have to be in the format &apos;yyyy-mm-dd&apos;.</p>
+<pre><code class="lang-r">&gt; bmw_2014 &lt;- Quandl(<span class="hljs-string">&quot;GOOG/FRA_BMW&quot;</span>, start_date = <span class="hljs-string">&quot;2014-01-01&quot;</span>, end_date = <span class="hljs-string">&quot;2014-12-31&quot;</span>,
++                    sort = <span class="hljs-string">&quot;asc&quot;</span>)
+</code></pre>
+<pre><code class="lang-r">&gt; str(bmw_2014)
+</code></pre>
+<pre><code>&apos;data.frame&apos;:    252 obs. of  6 variables:
+ $ Date  : Date, format: &quot;2014-01-02&quot; &quot;2014-01-03&quot; ...
+ $ Open  : num  85.3 83.5 84 83.1 83.9 ...
+ $ High  : num  86 84.4 84.3 84 84.6 ...
+ $ Low   : num  83.5 83.5 82.9 82.5 83.8 ...
+ $ Close : num  83.5 84 83.2 83.6 84.5 ...
+ $ Volume: num  14509 3476 4932 5129 6477 ...
+ - attr(*, &quot;freq&quot;)= chr &quot;daily&quot;
+</code></pre><pre><code class="lang-r">&gt; head(bmw_2014)
+</code></pre>
+<pre><code>        Date  Open  High   Low Close Volume
+1 2014-01-02 85.28 86.01 83.50 83.54  14509
+2 2014-01-03 83.50 84.40 83.50 84.03   3476
+3 2014-01-06 84.05 84.33 82.86 83.19   4932
+4 2014-01-07 83.10 84.01 82.47 83.60   5129
+5 2014-01-08 83.90 84.64 83.83 84.46   6477
+6 2014-01-09 84.55 85.11 83.72 84.18   7907
+</code></pre><p>Comparing both R objects <code>bmw</code> and <code>bmw_2014</code> we have reduced the observations for each 
+of the columns from 1193 to 252.
+The dates we have data for range from 2014-01-02 to 2014-12-30.</p>
+<p>By default, <code>Quandl()</code> returns data as class <code>data.frame</code> which is not the best
+output type when dealing with time series.</p>
+<p><code>Quandl()</code> offers several different output classes,</p>
+<ul>
+<li>data.frame</li>
+<li>ts</li>
+<li>zoo</li>
+<li>xts</li>
+<li>timeSeries,</li>
+</ul>
+<p>which can be chosen with <code>type</code> argument.</p>
+<p>An overview about the different classes and corresponding packages can be found in the 
+<a href="https://cran.r-project.org/web/views/TimeSeries.html" target="_blank">CRAN Task View: Time Series Analysis</a> or
+in the pdf <a href="http://faculty.washington.edu/ezivot/econ424/Working%20with%20Time%20Series%20Data%20in%20R.pdf" target="_blank">Working with Financial Time Series Data in R</a> written by Eric Zivot.</p>
+<p>To get an output with class <code>zoo</code> the function call would look like this:</p>
+<pre><code class="lang-r">&gt; bmw_2014_zoo &lt;- Quandl(<span class="hljs-string">&quot;GOOG/FRA_BMW&quot;</span>, start_date = <span class="hljs-string">&quot;2014-01-01&quot;</span>, end_date = <span class="hljs-string">&quot;2014-12-31&quot;</span>,
++                    sort = <span class="hljs-string">&quot;asc&quot;</span>, type = <span class="hljs-string">&quot;zoo&quot;</span>)
+</code></pre>
+<p>Let&apos;s have a look at what the standard <code>plot</code> function produces for both classes.</p>
+<pre><code class="lang-r">&gt; plot(bmw_2014)
+</code></pre>
+<p><img src="figure/plotcomp-1.png" alt="plot of chunk plotcomp"> </p>
+<pre><code class="lang-r">&gt; plot(bmw_2014_zoo)
+</code></pre>
+<p><img src="figure/plotcomp-2.png" alt="plot of chunk plotcomp"> </p>
+<p>First call produces a scatterplot matrix whereas the columns of the data frame are plotted against each other.
+Second call returns plotted time series for each column which is more appropriate for our data.</p>
+<p>The reason for this behavior is that &apos;plot&apos; function checks the classes of the objects to be visualized. 
+So under the hood for an object with class &apos;data.frame&apos; the function &apos;plot.data.frame&apos; from package <code>graphics</code> is used
+and for objects with class &apos;zoo&apos; the &apos;plot.zoo&apos; function in package <code>zoo</code>.</p>
+<p>Now we have data on a daily basis but <code>Quandl()</code> offers several more choices like,</p>
+<ul>
+<li>weekly</li>
+<li>monthly</li>
+<li>quarterly </li>
+<li>annual,</li>
+</ul>
+<p>which can be achived using the <code>collapse</code> argument.
+By collapsing a daily dataset to weekly,
+you will get a sample of the original dataset where the observation for each week
+is the last data point available for that week.</p>
+<p>To download weekly data of 2014 for BMW equity from Frankfurt Stock Exchange
+the function call would be</p>
+<pre><code class="lang-r">&gt; bmw_2014_zoo_weekly &lt;- Quandl(<span class="hljs-string">&quot;GOOG/FRA_BMW&quot;</span>,
++                              start_date = <span class="hljs-string">&quot;2014-01-01&quot;</span>, end_date = <span class="hljs-string">&quot;2014-12-31&quot;</span>,
++                              sort = <span class="hljs-string">&quot;asc&quot;</span>, type = <span class="hljs-string">&quot;zoo&quot;</span>, collapse = <span class="hljs-string">&quot;weekly&quot;</span>)
+</code></pre>
+<pre><code class="lang-r">&gt; str(bmw_2014_zoo_weekly)
+</code></pre>
+<pre><code>&apos;zoo&apos; series from 2014-01-05 to 2015-01-04
+  Data: num [1:53, 1:5] 83.5 84.3 85.6 84.7 80.6 ...
+ - attr(*, &quot;dimnames&quot;)=List of 2
+  ..$ : NULL
+  ..$ : chr [1:5] &quot;Open&quot; &quot;High&quot; &quot;Low&quot; &quot;Close&quot; ...
+  Index:  Date[1:53], format: &quot;2014-01-05&quot; &quot;2014-01-12&quot; &quot;2014-01-19&quot; &quot;2014-01-26&quot; ...
+</code></pre><pre><code class="lang-r">&gt; head(bmw_2014_zoo_weekly)
+</code></pre>
+<pre><code>            Open  High   Low Close Volume
+2014-01-05 83.50 84.40 83.50 84.03   3476
+2014-01-12 84.26 84.26 83.14 83.65  27281
+2014-01-19 85.57 86.73 85.56 86.34   8630
+2014-01-26 84.72 84.75 81.69 81.97  12149
+2014-02-02 80.62 80.98 78.66 80.72   9208
+2014-02-09 82.15 82.15 81.08 82.07   3565
+</code></pre><p>It is also possible to apply various transformations to the data.</p>
+<p>Suppose we have a time series with time stamps $i = 0, \ldots, I$,
+where $x_0$ refers to the starting date for the API call specified by <code>start_date</code>
+and $x_I$ refers to the end point specified by <code>end_date</code>.</p>
+<p>Possible values for the <code>transform</code> argument are</p>
+<ul>
+<li>none: leave the data as it is</li>
+<li><p>diff: shows the row - on - row change; 
+$$ 
+  x^{*}<em>i = x_i - x</em>{i-1}
+$$</p>
+</li>
+<li><p>rdiff: shows the relative row - on - row change; 
+$$ x^{*}<em>i = \dfrac{(x_i - x</em>{i-1})}{x_{i-1}} $$</p>
+</li>
+<li><p>normalize: set starting value at 100; 
+$$ x^{*}_i = \dfrac{x_i}{x_0} \cdot 100 $$</p>
+</li>
+<li><p>cumul: shows the cumulative sum; 
+$$ x^{*}<em>i =  x_i + x</em>{i-1} + x_{i-2} + \ldots + x_0 $$</p>
+</li>
+<li><p>rdiff<em>from: shows ratio between the latest point and an earlier point; 
+$$ x^{*}_i = \dfrac{(x_I - x</em>{i})}{x_{i}} $$</p>
+</li>
+</ul>
+<p>Furthermore, you can select single columns of the data. 
+If we want the returns of the closing prices (fourth column) of 2014 for BMW 
+we have to call the Quandl function like this</p>
+<pre><code class="lang-r">&gt; bmw_2014_returns_closing &lt;- Quandl(<span class="hljs-string">&quot;GOOG/FRA_BMW.4&quot;</span>,
++                                    start_date = <span class="hljs-string">&quot;2014-01-01&quot;</span>, end_date = <span class="hljs-string">&quot;2014-12-31&quot;</span>,
++                                    sort = <span class="hljs-string">&quot;asc&quot;</span>, type = <span class="hljs-string">&quot;zoo&quot;</span>, transform = <span class="hljs-string">&quot;rdiff&quot;</span>)
+&gt; 
+&gt; plot(bmw_2014_returns_closing, main = <span class="hljs-string">&quot;BMW closing price returns 2014&quot;</span>,
++      ylab = <span class="hljs-string">&quot;Returns&quot;</span>, xlab = <span class="hljs-string">&quot;Date&quot;</span>)
+</code></pre>
+<p><img src="figure/returnsclosing-1.png" alt="plot of chunk returnsclosing"> </p>
+<pre><code class="lang-r">&gt; summary(bmw_2014_returns_closing)
+</code></pre>
+<pre><code>     Index            bmw_2014_returns_closing
+ Min.   :2014-01-03   Min.   :-0.0387704      
+ 1st Qu.:2014-04-01   1st Qu.:-0.0078668      
+ Median :2014-07-02   Median : 0.0006620      
+ Mean   :2014-07-01   Mean   : 0.0003888      
+ 3rd Qu.:2014-09-27   3rd Qu.: 0.0084222      
+ Max.   :2014-12-30   Max.   : 0.0606808
+</code></pre><p>Finally, you can also get meta data. 
+The only thing needed to receive this information is to switch the <code>meta</code> argument 
+from <strong>FALSE</strong> to <strong>TRUE</strong>.</p>
+<pre><code class="lang-r">&gt; bmw_2014_zoo_meta &lt;- Quandl(<span class="hljs-string">&quot;GOOG/FRA_BMW&quot;</span>, start_date = <span class="hljs-string">&quot;2014-01-01&quot;</span>, end_date = <span class="hljs-string">&quot;2014-12-31&quot;</span>,
++                       sort = <span class="hljs-string">&quot;asc&quot;</span>, type = <span class="hljs-string">&quot;zoo&quot;</span>, meta = <span class="hljs-literal">TRUE</span>)
+&gt; str(bmw_2014_zoo_meta, <span class="hljs-string">&quot;meta&quot;</span>)
+</code></pre>
+<pre><code>&apos;zoo&apos; series from 2014-01-02 to 2014-12-30
+  Data: num [1:252, 1:5] 85.3 83.5 84 83.1 83.9 ...
+ - attr(*, &quot;dimnames&quot;)=List of 2
+  ..$ : NULL
+  ..$ : chr [1:5] &quot;Open&quot; &quot;High&quot; &quot;Low&quot; &quot;Close&quot; ...
+ - attr(*, &quot;meta&quot;)=List of 9
+  ..$ frequency         : chr &quot;daily&quot;
+  ..$ name              : chr &quot;Bayerische Motoren Werke AG (BMW)&quot;
+  ..$ description       : chr &quot;Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that focuses on the automobile and motorcyc&quot;| __truncated__
+  ..$ updated           : chr &quot;2015-09-14T20:59:41.739Z&quot;
+  ..$ source_code       : chr &quot;GOOG&quot;
+  ..$ code              : chr &quot;GOOG/FRA_BMW&quot;
+  ..$ source_name       : chr &quot;Google Finance&quot;
+  ..$ source_link       : chr &quot;www.google.com&quot;
+  ..$ source_description: chr &quot;This data is NOT sourced directly from Google.  It is however verified against their numbers.\r\n\r\nwww.quandl.com/WIKI is a b&quot;| __truncated__
+  Index:  Date[1:252], format: &quot;2014-01-02&quot; &quot;2014-01-03&quot; &quot;2014-01-06&quot; &quot;2014-01-07&quot; ...
+</code></pre><p>The <code>meta</code> attribute of the object <code>bmw_2014_zoo_meta</code> is a list with 9 entries, such as frequency, name, description and so on.
+Assuming that we are interested in an extended description of BMW we can get this with</p>
+<pre><code class="lang-r">&gt; attr(bmw_2014_zoo_meta,<span class="hljs-string">&quot;meta&quot;</span>)$description
+</code></pre>
+<pre><code>Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that 
+focuses on the automobile and motorcycle markets. It divides its activities into the
+three main segments: Automobiles, Motorcycles and Financial Services.
+It owns three brands: BMW, MINI and Rolls-Royce. Its BMW automobile range
+encompasses the 1 Series, including three-door, five-door, coupe and convertible models;
+the 3 Series, including sedan, touring, coupe and convertible models;
+the 5 Series, available in sedan and touring models;
+the 6 Series, available as a coupe or convertible;
+the 7 Series large sedan; the Z4 roadster and coupe;
+the sports utility vehicles, X3, X5 and X6 and M models, such as M3, M5 and M6.
+It also offers cars under the MINI brand and motorcycles under the BMW brand.
+The Rolls-Royce brand offers three luxury cars, Phantom, Coupe and Ghost.
+It has producing, assembly, service and sales subsidiaries throughout the world.
+In January 2013, it sold its Husqvarna brand.
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Quandl/Quandlauth.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Installation and Authentication"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
