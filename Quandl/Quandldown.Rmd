@@ -150,9 +150,7 @@ Possible values for the `transform` argument are
 
 * none: leave the data as it is
 * diff: shows the row - on - row change; 
-  $$ 
-    x^{*}_i = x_i - x_{i-1}
-  $$
+  $$x^{*}_i = x_i - x_{i-1}$$
   
 * rdiff: shows the relative row - on - row change; 
   $$ x^{*}_i = \dfrac{(x_i - x_{i-1})}{x_{i-1}} $$
