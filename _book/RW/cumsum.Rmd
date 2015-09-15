@@ -1,0 +1,6 @@
+# `cumsum()`
+This function computes the cumulative sums of a numeric object.
+```{r cumsumexp}
+x <- 1:10
+cumsum(x)
+```

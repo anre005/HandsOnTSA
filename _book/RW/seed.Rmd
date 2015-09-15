@@ -1,0 +1,17 @@
+# `set.seed()`
+The `set.seed()` function is needed to specify the state of `R`'s internal random number generator (RNG). 
+Without this function we are not able to achive reproducible results.
+
+```{r setseed}
+rnorm(10, mean = 10, sd = 2)
+```
+
+```{r setseed1}
+set.seed(123)
+rnorm(10, mean = 10, sd = 2)
+```
+
+```{r setseed2}
+set.seed(123)
+rnorm(10, mean = 10, sd = 2)
+```
