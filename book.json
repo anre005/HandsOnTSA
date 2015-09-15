@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "gitbook-plugin-mathjax"
+        "gitbook-plugin-mathjax",
+        "katex"
     ],
     "pluginsConfig": {}
 }
