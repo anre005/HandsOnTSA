@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Access Quandl Databases | Hands-On Time Series Analysis</title>
+        <title>`plot() and lines()` | Hands-On Time Series Analysis</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.3">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../Quandl/Quandlauth.html" />
+    <link rel="next" href="../RW/exercises.html" />
     
     
-    <link rel="prev" href="../Quandl/index.html" />
+    <link rel="prev" href="../RW/cumsum.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
+    <div class="book" data-level="2.4" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -82,7 +82,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="Quandl/Quandlacc.html">
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
             
                 
                     <a href="../Quandl/Quandlacc.html">
@@ -193,7 +193,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="RW/plotandlines.html">
+        <li class="chapter active" data-level="2.4" data-path="RW/plotandlines.html">
             
                 
                     <a href="../RW/plotandlines.html">
@@ -348,19 +348,55 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="access-to-quandl-databases">Access to Quandl Databases</h1>
-<p>You can create an account at <a href="https://www.quandl.com" target="_blank">Quandl</a> for free or you can sign in with your GitHub, Google or LinkedIn account.
-According to the <a href="https://www.quandl.com/docs/api" target="_blank">API of Quandl</a> there are <strong>Usage Rules</strong></p>
-<blockquote>
-<p>The Quandl API is free to use. However, you must have permission to access the data resources you request.
-All open databases have unrestricted permissions. To access any premium database, you must be a subscriber to that database.</p>
-</blockquote>
-<p>and <strong>Rate Limits</strong></p>
-<blockquote>
-<p>Anonymous requests are subject to a limit of 50 calls per day. Note that anonymous requests for premium databases are not accepted.
-Authenticated users have a limit of 2,000 calls per 10 minutes, and a limit of 50,000 calls per day.
-Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit of 720,000 calls per day.</p>
-</blockquote>
+                        <h1 id="-plot-and-lines"><code>plot()</code> and <code>lines()</code></h1>
+<p>The base <code>R</code> <code>plot()</code> function is a good starting point for visualization our time series. </p>
+<pre><code class="lang-r">plot(x, y, <span class="hljs-keyword">...</span>)
+</code></pre>
+<p>The mandatory argument <strong>x</strong> describes the coordinates of the points in the plot, <strong>y</strong> is optional if <strong>x</strong> is already an appropriate structure. 
+The three dots <strong>...</strong> stand for further graphical parameters which can be passed to methods. 
+Additional informations can be found at the help page of the <code>plot()</code> function (<code>?plot</code> in the R console).</p>
+<p>Now suppose we have downloaded historical closing prices for 2014 for the BMW equity from Frankfurt Stock Exchange as a <code>data.frame</code>.
+(See chapter <em>Using Quandl with R</em>)</p>
+<p>We will start with plotting the closing prices.
+The first function call uses only the mandatory argument,
+the second explicitly specifies \(x\) and \(y\) values. </p>
+<pre><code class="lang-r">plot(x = bmw[,<span class="hljs-string">&quot;Close&quot;</span>])
+</code></pre>
+<p><img src="figure/plotdefault1-1.png" alt="plot of chunk plotdefault1"> </p>
+<pre><code class="lang-r">plot(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;Close&quot;</span>])
+</code></pre>
+<p><img src="figure/plotdefault1-2.png" alt="plot of chunk plotdefault1"> </p>
+<p>These function calls produce  point plots with the closing prices on the \(y\) - axis but the \(x\) - axis differ.
+In the first plot the index numbers of the \(y\) - values are represented on the \(x\) - axis so you can see the length 
+of the object. Due to the fact that the <em>Date</em> column contains entries of class <code>Date</code> the ticks on the \(x\) - axis in the 
+second plot are labelled with the names of the months instead of index numbers.</p>
+<p>We change from a point plot to a line plot which is often much more appropriate for time series 
+and remove the labels for both the \(x\) - axis and \(y\) - axis. </p>
+<pre><code class="lang-r">plot(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;Close&quot;</span>], type = <span class="hljs-string">&quot;l&quot;</span>, xlab = <span class="hljs-string">&quot;&quot;</span>, ylab = <span class="hljs-string">&quot;&quot;</span>)
+</code></pre>
+<p><img src="figure/lineplot1-1.png" alt="plot of chunk lineplot1"> </p>
+<p>Now we add a title to the plot, change the linetype from solid to dashed and color it red.</p>
+<pre><code class="lang-r">plot(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;Close&quot;</span>], type = <span class="hljs-string">&quot;l&quot;</span>, xlab = <span class="hljs-string">&quot;&quot;</span>, ylab = <span class="hljs-string">&quot;&quot;</span>,
+     main = <span class="hljs-string">&quot;Closing Prices BMW 2014&quot;</span>, lty = <span class="hljs-string">&quot;dashed&quot;</span>, col = <span class="hljs-string">&quot;red&quot;</span>)
+</code></pre>
+<p><img src="figure/lineplottitle-1.png" alt="plot of chunk lineplottitle"> </p>
+<p>A list about the different possible colors and linetypes can be found at the help page of <code>par()</code>
+in the <em>Graphical Parameters</em> section.</p>
+<p>With the <code>lines()</code> function it is possible to plot two or more time series together.
+We want the Open, High, Low and Close Prices all together in one plot.
+For a more readable graphic we also add a legend and set the limity for the \(y\) - axis to 70 and 100.</p>
+<pre><code class="lang-r">plot(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;Close&quot;</span>], type = <span class="hljs-string">&quot;l&quot;</span>, xlab = <span class="hljs-string">&quot;&quot;</span>, ylab = <span class="hljs-string">&quot;&quot;</span>,
+     main = <span class="hljs-string">&quot;OHLC Prices BMW 2014&quot;</span>, ylim = c(<span class="hljs-number">70</span>,<span class="hljs-number">100</span>))
+lines(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;Open&quot;</span>], col = <span class="hljs-string">&quot;green&quot;</span>, lty = <span class="hljs-string">&quot;dotted&quot;</span>)
+lines(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;High&quot;</span>], col = <span class="hljs-string">&quot;red&quot;</span>, lty = <span class="hljs-string">&quot;dotdash&quot;</span>)
+lines(x = bmw[,<span class="hljs-string">&quot;Date&quot;</span>], y = bmw[,<span class="hljs-string">&quot;Low&quot;</span>], col = <span class="hljs-string">&quot;blue&quot;</span>, lty = <span class="hljs-string">&quot;longdash&quot;</span>)
+
+legend(<span class="hljs-string">&quot;bottom&quot;</span>, 
+       legend = c(<span class="hljs-string">&quot;Open&quot;</span>, <span class="hljs-string">&quot;High&quot;</span>, <span class="hljs-string">&quot;Low&quot;</span>, <span class="hljs-string">&quot;Close&quot;</span>),
+       col = c(<span class="hljs-string">&quot;green&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span>, <span class="hljs-string">&quot;black&quot;</span>),
+       lty = c(<span class="hljs-string">&quot;dotted&quot;</span>, <span class="hljs-string">&quot;dotdash&quot;</span>, <span class="hljs-string">&quot;longdash&quot;</span>, <span class="hljs-string">&quot;solid&quot;</span>))
+</code></pre>
+<p><img src="figure/ohlcbase-1.png" alt="plot of chunk ohlcbase"> </p>
 
                     
                     </section>
@@ -371,10 +407,10 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
         </div>
 
         
-        <a href="../Quandl/index.html" class="navigation navigation-prev " aria-label="Previous page: Quandl"><i class="fa fa-angle-left"></i></a>
+        <a href="../RW/cumsum.html" class="navigation navigation-prev " aria-label="Previous page: `cumsum()`"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../Quandl/Quandlauth.html" class="navigation navigation-next " aria-label="Next page: Installation and Authentication"><i class="fa fa-angle-right"></i></a>
+        <a href="../RW/exercises.html" class="navigation navigation-next " aria-label="Next page: Exercises"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -392,7 +428,7 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"mathjax":{}};
     gitbook.start(config);
 });
 </script>

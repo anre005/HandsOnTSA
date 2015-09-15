@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Access Quandl Databases | Hands-On Time Series Analysis</title>
+        <title>`set.seed()` | Hands-On Time Series Analysis</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.3">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../Quandl/Quandlauth.html" />
+    <link rel="next" href="../RW/cumsum.html" />
     
     
-    <link rel="prev" href="../Quandl/index.html" />
+    <link rel="prev" href="../RW/rnorm.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -82,7 +82,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="Quandl/Quandlacc.html">
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
             
                 
                     <a href="../Quandl/Quandlacc.html">
@@ -163,7 +163,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="RW/seed.html">
+        <li class="chapter active" data-level="2.2" data-path="RW/seed.html">
             
                 
                     <a href="../RW/seed.html">
@@ -348,20 +348,24 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="access-to-quandl-databases">Access to Quandl Databases</h1>
-<p>You can create an account at <a href="https://www.quandl.com" target="_blank">Quandl</a> for free or you can sign in with your GitHub, Google or LinkedIn account.
-According to the <a href="https://www.quandl.com/docs/api" target="_blank">API of Quandl</a> there are <strong>Usage Rules</strong></p>
-<blockquote>
-<p>The Quandl API is free to use. However, you must have permission to access the data resources you request.
-All open databases have unrestricted permissions. To access any premium database, you must be a subscriber to that database.</p>
-</blockquote>
-<p>and <strong>Rate Limits</strong></p>
-<blockquote>
-<p>Anonymous requests are subject to a limit of 50 calls per day. Note that anonymous requests for premium databases are not accepted.
-Authenticated users have a limit of 2,000 calls per 10 minutes, and a limit of 50,000 calls per day.
-Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit of 720,000 calls per day.</p>
-</blockquote>
-
+                        <h1 id="-set-seed"><code>set.seed()</code></h1>
+<p>The <code>set.seed()</code> function is needed to specify the state of <code>R</code>&apos;s internal random number generator (RNG). 
+Without this function we are not able to achive reproducible results.</p>
+<pre><code class="lang-r">rnorm(<span class="hljs-number">10</span>, mean = <span class="hljs-number">10</span>, sd = <span class="hljs-number">2</span>)
+</code></pre>
+<pre><code>##  [1]  9.443759  9.719422  8.979813 10.880330  8.602023  8.919098 13.572233
+##  [8] 10.593859 10.752857 10.022043
+</code></pre><pre><code class="lang-r">set.seed(<span class="hljs-number">123</span>)
+rnorm(<span class="hljs-number">10</span>, mean = <span class="hljs-number">10</span>, sd = <span class="hljs-number">2</span>)
+</code></pre>
+<pre><code>##  [1]  8.879049  9.539645 13.117417 10.141017 10.258575 13.430130 10.921832
+##  [8]  7.469878  8.626294  9.108676
+</code></pre><pre><code class="lang-r">set.seed(<span class="hljs-number">123</span>)
+rnorm(<span class="hljs-number">10</span>, mean = <span class="hljs-number">10</span>, sd = <span class="hljs-number">2</span>)
+</code></pre>
+<pre><code>##  [1]  8.879049  9.539645 13.117417 10.141017 10.258575 13.430130 10.921832
+##  [8]  7.469878  8.626294  9.108676
+</code></pre>
                     
                     </section>
                 
@@ -371,10 +375,10 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
         </div>
 
         
-        <a href="../Quandl/index.html" class="navigation navigation-prev " aria-label="Previous page: Quandl"><i class="fa fa-angle-left"></i></a>
+        <a href="../RW/rnorm.html" class="navigation navigation-prev " aria-label="Previous page: `rnorm()`"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../Quandl/Quandlauth.html" class="navigation navigation-next " aria-label="Next page: Installation and Authentication"><i class="fa fa-angle-right"></i></a>
+        <a href="../RW/cumsum.html" class="navigation navigation-next " aria-label="Next page: `cumsum()`"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -392,7 +396,7 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"mathjax":{}};
     gitbook.start(config);
 });
 </script>

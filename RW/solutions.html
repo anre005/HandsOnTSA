@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Access Quandl Databases | Hands-On Time Series Analysis</title>
+        <title>Solutions | Hands-On Time Series Analysis</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.3">
@@ -25,10 +25,8 @@
         
     
     
-    <link rel="next" href="../Quandl/Quandlauth.html" />
     
-    
-    <link rel="prev" href="../Quandl/index.html" />
+    <link rel="prev" href="../RW/exercises.html" />
     
 
         
@@ -36,7 +34,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
+    <div class="book" data-level="2.6" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -82,7 +80,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="Quandl/Quandlacc.html">
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
             
                 
                     <a href="../Quandl/Quandlacc.html">
@@ -223,7 +221,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="RW/solutions.html">
+        <li class="chapter active" data-level="2.6" data-path="RW/solutions.html">
             
                 
                     <a href="../RW/solutions.html">
@@ -348,19 +346,72 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="access-to-quandl-databases">Access to Quandl Databases</h1>
-<p>You can create an account at <a href="https://www.quandl.com" target="_blank">Quandl</a> for free or you can sign in with your GitHub, Google or LinkedIn account.
-According to the <a href="https://www.quandl.com/docs/api" target="_blank">API of Quandl</a> there are <strong>Usage Rules</strong></p>
-<blockquote>
-<p>The Quandl API is free to use. However, you must have permission to access the data resources you request.
-All open databases have unrestricted permissions. To access any premium database, you must be a subscriber to that database.</p>
-</blockquote>
-<p>and <strong>Rate Limits</strong></p>
-<blockquote>
-<p>Anonymous requests are subject to a limit of 50 calls per day. Note that anonymous requests for premium databases are not accepted.
-Authenticated users have a limit of 2,000 calls per 10 minutes, and a limit of 50,000 calls per day.
-Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit of 720,000 calls per day.</p>
-</blockquote>
+                        <h1 id="solutions">Solutions</h1>
+<pre><code class="lang-r"><span class="hljs-comment"># Solution Exercise 1:</span>
+set.seed(<span class="hljs-number">111</span>)
+wn &lt;- rnorm(<span class="hljs-number">500</span>, mean = <span class="hljs-number">0</span>, sd = <span class="hljs-number">1</span>)
+rw_wo_drift &lt;- cumsum(wn)
+plot(rw_wo_drift, type = <span class="hljs-string">&quot;l&quot;</span>, lty = <span class="hljs-string">&quot;dashed&quot;</span>, col = <span class="hljs-string">&quot;red&quot;</span>)
+</code></pre>
+<p><img src="figure/sol1-1.png" alt="plot of chunk sol1"> </p>
+<pre><code class="lang-r"><span class="hljs-comment"># Solution Exercise 2:</span>
+wn_drift &lt;- rnorm(<span class="hljs-number">500</span>, mean = <span class="hljs-number">0</span>, sd = <span class="hljs-number">1</span>)
+rw_drift &lt;- cumsum(wn_drift + <span class="hljs-number">0.2</span>)
+
+plot(rw_drift, type = <span class="hljs-string">&quot;l&quot;</span>, lty = <span class="hljs-string">&quot;dashed&quot;</span>, col = <span class="hljs-string">&quot;cyan&quot;</span>, ylim = c(-<span class="hljs-number">20</span>,<span class="hljs-number">125</span>))
+lines(rw_wo_drift, lty = <span class="hljs-string">&quot;dotted&quot;</span>, col = <span class="hljs-string">&quot;orange&quot;</span>)
+legend(<span class="hljs-string">&quot;topleft&quot;</span>, 
+       legend = c(<span class="hljs-string">&quot;Random Walk with drift&quot;</span>, <span class="hljs-string">&quot;Random Walk without Drift&quot;</span>),
+       col = c(<span class="hljs-string">&quot;cyan&quot;</span>, <span class="hljs-string">&quot;orange&quot;</span>),
+       lty = c(<span class="hljs-string">&quot;dashed&quot;</span>, <span class="hljs-string">&quot;dotted&quot;</span>))
+</code></pre>
+<p><img src="figure/sol2-1.png" alt="plot of chunk sol2"> </p>
+<pre><code class="lang-r"><span class="hljs-comment"># Solution Exercise 3:</span>
+
+Box.test(rw_wo_drift, type = <span class="hljs-string">&quot;Box-Pierce&quot;</span>)
+</code></pre>
+<pre><code>## 
+##     Box-Pierce test
+## 
+## data:  rw_wo_drift
+## X-squared = 484.58, df = 1, p-value &lt; 2.2e-16
+</code></pre><pre><code class="lang-r">Box.test(rw_wo_drift, type = <span class="hljs-string">&quot;Ljung-Box&quot;</span>)
+</code></pre>
+<pre><code>## 
+##     Box-Ljung test
+## 
+## data:  rw_wo_drift
+## X-squared = 487.49, df = 1, p-value &lt; 2.2e-16
+</code></pre><pre><code class="lang-r">Box.test(rw_drift, type = <span class="hljs-string">&quot;Box-Pierce&quot;</span>)
+</code></pre>
+<pre><code>## 
+##     Box-Pierce test
+## 
+## data:  rw_drift
+## X-squared = 492.97, df = 1, p-value &lt; 2.2e-16
+</code></pre><pre><code class="lang-r">Box.test(rw_drift, type = <span class="hljs-string">&quot;Ljung-Box&quot;</span>)
+</code></pre>
+<pre><code>## 
+##     Box-Ljung test
+## 
+## data:  rw_drift
+## X-squared = 495.93, df = 1, p-value &lt; 2.2e-16
+</code></pre><pre><code class="lang-r">Box.test(diff(rw_wo_drift), type = <span class="hljs-string">&quot;Box-Pierce&quot;</span>)
+</code></pre>
+<pre><code>## 
+##     Box-Pierce test
+## 
+## data:  diff(rw_wo_drift)
+## X-squared = 0.5729, df = 1, p-value = 0.4491
+</code></pre><pre><code class="lang-r">Box.test(diff(rw_wo_drift), type = <span class="hljs-string">&quot;Ljung-Box&quot;</span>)
+</code></pre>
+<pre><code>## 
+##     Box-Ljung test
+## 
+## data:  diff(rw_wo_drift)
+## X-squared = 0.57635, df = 1, p-value = 0.4477
+</code></pre><pre><code class="lang-r"><span class="hljs-comment"># White Noise</span>
+</code></pre>
 
                     
                     </section>
@@ -371,10 +422,8 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
         </div>
 
         
-        <a href="../Quandl/index.html" class="navigation navigation-prev " aria-label="Previous page: Quandl"><i class="fa fa-angle-left"></i></a>
+        <a href="../RW/exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Exercises"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../Quandl/Quandlauth.html" class="navigation navigation-next " aria-label="Next page: Installation and Authentication"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -392,7 +441,7 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"mathjax":{}};
     gitbook.start(config);
 });
 </script>

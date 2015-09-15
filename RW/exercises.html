@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Access Quandl Databases | Hands-On Time Series Analysis</title>
+        <title>Exercises | Hands-On Time Series Analysis</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.3">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../Quandl/Quandlauth.html" />
+    <link rel="next" href="../RW/solutions.html" />
     
     
-    <link rel="prev" href="../Quandl/index.html" />
+    <link rel="prev" href="../RW/plotandlines.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
+    <div class="book" data-level="2.5" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -82,7 +82,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="Quandl/Quandlacc.html">
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
             
                 
                     <a href="../Quandl/Quandlacc.html">
@@ -208,7 +208,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="RW/exercises.html">
+        <li class="chapter active" data-level="2.5" data-path="RW/exercises.html">
             
                 
                     <a href="../RW/exercises.html">
@@ -348,19 +348,40 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="access-to-quandl-databases">Access to Quandl Databases</h1>
-<p>You can create an account at <a href="https://www.quandl.com" target="_blank">Quandl</a> for free or you can sign in with your GitHub, Google or LinkedIn account.
-According to the <a href="https://www.quandl.com/docs/api" target="_blank">API of Quandl</a> there are <strong>Usage Rules</strong></p>
-<blockquote>
-<p>The Quandl API is free to use. However, you must have permission to access the data resources you request.
-All open databases have unrestricted permissions. To access any premium database, you must be a subscriber to that database.</p>
-</blockquote>
-<p>and <strong>Rate Limits</strong></p>
-<blockquote>
-<p>Anonymous requests are subject to a limit of 50 calls per day. Note that anonymous requests for premium databases are not accepted.
-Authenticated users have a limit of 2,000 calls per 10 minutes, and a limit of 50,000 calls per day.
-Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit of 720,000 calls per day.</p>
-</blockquote>
+                        <h1 id="exercises">Exercises</h1>
+<ol>
+<li><strong>Random Walk without Drift</strong><ul>
+<li>Set the seed of <code>R</code>&apos;s RNG to $111$.</li>
+<li>Generate $100$ normally distributed random numbers with mean $0$ and standard deviation $1$
+ and save your results in a variable <em>wn</em>.</li>
+<li>Calculate the random walk without drift and save it in the variable <em>rw_wo_drift</em>.</li>
+<li>Plot the random walk as a dashed red line.</li>
+<li>Take a look at your neighbour&apos;s display. It should show the same result as yours.</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p><strong>Random Walk with Drift</strong></p>
+<ul>
+<li>Generate $100$ normally distributed random numbers with mean $0$ and standard deviation $1$
+and save your results in a variable <em>wn_drift</em>.</li>
+<li>Calculate the random walk with drift, use $\mu = 0.2$, and save it in the variable <em>rw_drift</em>.</li>
+<li>Use your results from the first exercise and visualize both random walks in one plot with colors 
+and linetypes of your choice.</li>
+<li>Add a legend to the plot.</li>
+</ul>
+</li>
+<li><p><strong>Portmanteau Tests</strong></p>
+<ul>
+<li>Use the function <code>Box.test()</code> to calculate the Box - Pierce and Ljung - Box test statistic
+for both random walks.</li>
+<li>Make a decision by using the functions output.</li>
+<li>Use the <code>diff()</code> function to compute the lagged differences of the random walk without drift.
+Calculate the Box - Pierce and Ljung - Box test statistic for the differenced time series.</li>
+<li>What kind of stochastic process is the result of a differenced random walk without drift?</li>
+</ul>
+</li>
+</ol>
 
                     
                     </section>
@@ -371,10 +392,10 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
         </div>
 
         
-        <a href="../Quandl/index.html" class="navigation navigation-prev " aria-label="Previous page: Quandl"><i class="fa fa-angle-left"></i></a>
+        <a href="../RW/plotandlines.html" class="navigation navigation-prev " aria-label="Previous page: `plot() and lines()`"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../Quandl/Quandlauth.html" class="navigation navigation-next " aria-label="Next page: Installation and Authentication"><i class="fa fa-angle-right"></i></a>
+        <a href="../RW/solutions.html" class="navigation navigation-next " aria-label="Next page: Solutions"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -392,7 +413,7 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"mathjax":{}};
     gitbook.start(config);
 });
 </script>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Access Quandl Databases | Hands-On Time Series Analysis</title>
+        <title>Random Walk and White Noise | Hands-On Time Series Analysis</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.3">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../Quandl/Quandlauth.html" />
+    <link rel="next" href="../RW/rnorm.html" />
     
     
-    <link rel="prev" href="../Quandl/index.html" />
+    <link rel="prev" href="../Quandl/Quandldown.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
+    <div class="book" data-level="2" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -82,7 +82,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="Quandl/Quandlacc.html">
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
             
                 
                     <a href="../Quandl/Quandlacc.html">
@@ -132,7 +132,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2" data-path="RW/index.html">
+        <li class="chapter active" data-level="2" data-path="RW/index.html">
             
                 
                     <a href="../RW/index.html">
@@ -348,19 +348,39 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="access-to-quandl-databases">Access to Quandl Databases</h1>
-<p>You can create an account at <a href="https://www.quandl.com" target="_blank">Quandl</a> for free or you can sign in with your GitHub, Google or LinkedIn account.
-According to the <a href="https://www.quandl.com/docs/api" target="_blank">API of Quandl</a> there are <strong>Usage Rules</strong></p>
-<blockquote>
-<p>The Quandl API is free to use. However, you must have permission to access the data resources you request.
-All open databases have unrestricted permissions. To access any premium database, you must be a subscriber to that database.</p>
-</blockquote>
-<p>and <strong>Rate Limits</strong></p>
-<blockquote>
-<p>Anonymous requests are subject to a limit of 50 calls per day. Note that anonymous requests for premium databases are not accepted.
-Authenticated users have a limit of 2,000 calls per 10 minutes, and a limit of 50,000 calls per day.
-Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit of 720,000 calls per day.</p>
-</blockquote>
+                        <h1 id="random-walk-and-white-noise">Random Walk and White Noise</h1>
+<p>On lecture slide 30 the definition of a random walk is given as</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+  y_t &= y_{t-1} + u_t, \quad &\text{for}\: t = 1,2,\ldots \quad &(\text{random walk without drift})  \\ 
+  y_t &= \mu + y_{t-1} + u_t, \quad &\text{for}\: t = 1,2,\ldots \quad &(\text{with drift parameter } \mu),
+\end{aligned}
+</script></p>
+<p>with white noise $u_t$, which means $E(u_t) = 0$ and $Var(u_t) = \sigma_u^2$,
+and assuming that the initial value $y_0$ equals 0.</p>
+<p>The two equations above can be rewritten as a cumulative sum of white noise variates.
+First, rewrite the equation for a random walk without drift,</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+  y_t &= y_{t-1} + u_t \\ 
+  y_t &= y_{t-2} + u_{t-1} + u_t \\
+  y_t &= y_{t-3} + u_{t-2} +  u_{t-1} + u_t \\
+  \vdots \\
+  y_t &= \sum\limits_{j = 1}^{j = t} u_j,
+\end{aligned}
+</script></p>
+<p>and for a random walk with drift parameter $\mu$,</p>
+<p><script type="math/tex; mode=display">
+\begin{aligned}
+  y_t &= \mu + y_{t-1} + u_t \\ 
+  y_t &= \mu + \mu + y_{t-2} + u_{t-1} + u_t \\
+  y_t &= \mu + \mu + \mu + y_{t-3} + u_{t-2} + u_{t-1} + u_t \\
+  \vdots \\
+  y_t &= \mu t + \sum\limits_{j = 1}^{j = t} u_j.
+\end{aligned}
+</script></p>
+<p>To generate a gaussian random walk (with and without drift) in <code>R</code> we need the functions <code>rnorm()</code>, <code>set.seed()</code>, and <code>cumsum()</code>.
+For visualizations of our results we use base R functionalities, namely <code>plot()</code> and <code>lines()</code> functions. </p>
 
                     
                     </section>
@@ -371,10 +391,10 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
         </div>
 
         
-        <a href="../Quandl/index.html" class="navigation navigation-prev " aria-label="Previous page: Quandl"><i class="fa fa-angle-left"></i></a>
+        <a href="../Quandl/Quandldown.html" class="navigation navigation-prev " aria-label="Previous page: Downloading Historical Data"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../Quandl/Quandlauth.html" class="navigation navigation-next " aria-label="Next page: Installation and Authentication"><i class="fa fa-angle-right"></i></a>
+        <a href="../RW/rnorm.html" class="navigation navigation-next " aria-label="Next page: `rnorm()`"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -392,7 +412,7 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"mathjax":{}};
     gitbook.start(config);
 });
 </script>

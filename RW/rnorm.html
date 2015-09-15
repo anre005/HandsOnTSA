@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Access Quandl Databases | Hands-On Time Series Analysis</title>
+        <title>`rnorm()` | Hands-On Time Series Analysis</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.3.3">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../Quandl/Quandlauth.html" />
+    <link rel="next" href="../RW/seed.html" />
     
     
-    <link rel="prev" href="../Quandl/index.html" />
+    <link rel="prev" href="../RW/index.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
+    <div class="book" data-level="2.1" data-basepath=".." data-revision="Tue Sep 15 2015 17:55:01 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -82,7 +82,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="Quandl/Quandlacc.html">
+        <li class="chapter " data-level="1.1" data-path="Quandl/Quandlacc.html">
             
                 
                     <a href="../Quandl/Quandlacc.html">
@@ -148,7 +148,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1" data-path="RW/rnorm.html">
+        <li class="chapter active" data-level="2.1" data-path="RW/rnorm.html">
             
                 
                     <a href="../RW/rnorm.html">
@@ -348,19 +348,28 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="access-to-quandl-databases">Access to Quandl Databases</h1>
-<p>You can create an account at <a href="https://www.quandl.com" target="_blank">Quandl</a> for free or you can sign in with your GitHub, Google or LinkedIn account.
-According to the <a href="https://www.quandl.com/docs/api" target="_blank">API of Quandl</a> there are <strong>Usage Rules</strong></p>
-<blockquote>
-<p>The Quandl API is free to use. However, you must have permission to access the data resources you request.
-All open databases have unrestricted permissions. To access any premium database, you must be a subscriber to that database.</p>
-</blockquote>
-<p>and <strong>Rate Limits</strong></p>
-<blockquote>
-<p>Anonymous requests are subject to a limit of 50 calls per day. Note that anonymous requests for premium databases are not accepted.
-Authenticated users have a limit of 2,000 calls per 10 minutes, and a limit of 50,000 calls per day.
-Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit of 720,000 calls per day.</p>
-</blockquote>
+                        <h1 id="-rnorm"><code>rnorm()</code></h1>
+<p>The function <code>rnorm()</code> enables us to generate normally distributed random numbers.</p>
+<pre><code class="lang-r">rnorm(n, mean = <span class="hljs-number">0</span>, sd = <span class="hljs-number">1</span>)
+</code></pre>
+<p>where <strong>n</strong> is the number of random numbers we want to generate,
+<strong>mean</strong> is the mean of the normal distribution and
+<strong>sd</strong> is the standard deviation.</p>
+<p>A function call to get 1000 normal distribution random numbers with mean 10 and standard deviation 2 would be</p>
+<pre><code class="lang-r">rnorm(n = <span class="hljs-number">1000</span>, mean = <span class="hljs-number">10</span>, sd = <span class="hljs-number">2</span>)
+</code></pre>
+<p><strong>Note</strong>: Besides random number generation basic <code>R</code> provides probability distribution functions, density functions and quantile functions
+for most of the common distributions. 
+The following naming scheme is used:</p>
+<ul>
+<li>p<em>dist</em> for probability distribution functions,</li>
+<li>d<em>dist</em> for density functions,</li>
+<li>q<em>dist</em> for quantile functions,</li>
+<li>r<em>dist</em> for random number generation,</li>
+</ul>
+<p>where <em>dist</em> indicates the desired distribution. </p>
+<p>An overview over the base <code>R</code> functionality and distribution provided by additional CRAN packages can be found
+<a href="https://cran.r-project.org/web/views/Distributions.html" target="_blank">here</a>.</p>
 
                     
                     </section>
@@ -371,10 +380,10 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
         </div>
 
         
-        <a href="../Quandl/index.html" class="navigation navigation-prev " aria-label="Previous page: Quandl"><i class="fa fa-angle-left"></i></a>
+        <a href="../RW/index.html" class="navigation navigation-prev " aria-label="Previous page: Random Walk and White Noise"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../Quandl/Quandlauth.html" class="navigation navigation-next " aria-label="Next page: Installation and Authentication"><i class="fa fa-angle-right"></i></a>
+        <a href="../RW/seed.html" class="navigation navigation-next " aria-label="Next page: `set.seed()`"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
@@ -392,7 +401,7 @@ Premium data subscribers have a limit of 5,000 calls per 10 minutes, and a limit
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"mathjax":{}};
     gitbook.start(config);
 });
 </script>
