@@ -77,7 +77,7 @@ AIC Criterion:        139.14
 ```
 
 Description:
- Wed Sep 16 10:41:20 2015 by user:  
+ Wed Sep 16 10:50:13 2015 by user:  
 ```
 
 ![plot of chunk birthsarma_sum](figure/birthsarma_sum-1.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-2.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-3.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-4.png) 
