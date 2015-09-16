@@ -1,0 +1,34 @@
+# Solutions
+
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=TRUE, comment='', results='markup')
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+library(fArma)
+Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+# end setup chunk
+```
+
+```{r}
+# Solution Exercise 1
+ar1 <- armaFit(~arma(1,0), data = sales_adj, method = "ML")
+ma1 <- armaFit(~arma(0,1), data = sales_adj, method = "ML")
+arma11 <- armaFit(~arma(1,1), data = sales_adj, method = "ML")
+arma22 <- armaFit(~arma(2,2), data = sales_adj, method = "ML")
+
+ar1@fit$aic
+ma1@fit$aic
+arma11@fit$aic
+arma22@fit$aic
+
+# Solution Exercise 2
+polyroot(c(1, -arma22@fit$coef[c("ar1","ar2")]))
+polyroot(c(1, arma22@fit$coef[c("ma1","ma2")]))
+
+# No unit roots in common and all unit roots lie outside the unit circle
+
+# Solution Exercise 3
+predict(arma22, n.ahead = 6)
+predict(arma22, n.ahead = 12)
+```

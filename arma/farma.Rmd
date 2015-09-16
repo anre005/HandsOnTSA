@@ -1,0 +1,45 @@
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=TRUE, comment='', results='markup')
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+library(Quandl)
+Quandl.auth("x81naq-zMUpwM9fzkhYq")
+Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+# end setup chunk
+```
+
+# `fArma` package
+
+```{r fArma, message=FALSE}
+library(fArma)
+```
+
+We will use the `armaFit()` function from the `fArma` package for fitting ARMA models to historical time series.
+
+```{r armaFit, eval = FALSE}
+armaFit(formula, data, method = "ML")
+# additional arguments removed
+```
+
+With `formula` argument one can specify which type of ARMA model should be fitted to `data`, which is the time series. 
+Mandatory argument `formula` can be set in a `~arma(p,q)` style with the AR order \\(p\\) and the MA order \\(q\\).
+Using the birth rates time series from the previous chapter one can fit a ARMA(1,1) to the data with the following line of code.
+```{r birthsarma}
+births_arma <- armaFit(formula = ~arma(1,1), data = births, method = "ML")
+class(births_arma)
+```
+
+Applying the `summary` function to the `births_arma` object, which has class `fARMA`, by default gives an overview about the results
+of the model estimation and produces some plots which can be used to interpret the goodness of fit.
+
+```{r birthsarma_sum, fig.show = 'hold'}
+summary(births_arma)
+```
+
+
+One can also forecast the time series with the `predict()` function. By default ten values are predicted.
+
+```{r predictfun}
+predict(births_arma)
+```

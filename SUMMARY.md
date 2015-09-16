@@ -16,3 +16,7 @@ This is the summary of my book.
     * [stl()](DC/stl.md)
     * [Exercises](DC/exercises.md)
     * [Solutions](DC/solutions.md)
+* [ARMA Models](arma/REAMDME.md)
+    * [fArma package](arma/farma.md)
+    * [Exercises](arma/exercises.md)
+    * [Solutions](arma/solutions.md)
