@@ -10,7 +10,7 @@
       `Quandl()` function so it matches the recommendation from the `stl()` help page.
     
 2.  **Decomposing Time Series**
-    - Decompose your time series from Exercise 1 with `stl()` function
+    - Decompose your time series from exercise 1 with `stl()` function
       assuming that the seasonal pattern is constant through time.
     - Seasonally adjust the time series and detrend it. 
       This means removing the seasonal component and the trend component from the raw data.

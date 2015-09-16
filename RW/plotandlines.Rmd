@@ -10,6 +10,7 @@ Additional informations can be found at the help page of the `plot()` function (
 
 Now suppose we have downloaded historical closing prices for 2014 for the BMW equity from Frankfurt Stock Exchange as a `data.frame`.
 (See chapter *Using Quandl with R*)
+
 ```{r readdata1, echo = FALSE}
 bmw <- readRDS("BMW2014.rds")
 ```

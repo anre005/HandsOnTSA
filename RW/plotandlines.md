@@ -13,6 +13,7 @@ Now suppose we have downloaded historical closing prices for 2014 for the BMW eq
 (See chapter *Using Quandl with R*)
 
 
+
 We will start with plotting the closing prices.
 The first function call uses only the mandatory argument,
 the second explicitly specifies \\(x\\) and \\(y\\) values. 
