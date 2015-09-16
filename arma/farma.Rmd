@@ -6,6 +6,7 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 library(Quandl)
 Quandl.auth("x81naq-zMUpwM9fzkhYq")
 Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+births <- Quandl("INSEE/62_001641602_M", type = "ts")
 # end setup chunk
 ```
 
