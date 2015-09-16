@@ -6,10 +6,10 @@ The workhorse is the `Quandl()` function.
 
 ```r
 > Quandl(code, type = c("raw", "ts", "zoo", "xts", "timeSeries"), start_date,
-+   end_date, transformation = c("", "diff", "rdiff", "normalize", "cumul",
-+   "rdiff_from"), collapse = c("", "daily", "weekly", "monthly", "quarterly",
-+   "annual"), sort = c("desc", "asc"), meta = FALSE,
-+   authcode = Quandl.auth(), ...)
++        end_date, transformation = c("", "diff", "rdiff", "normalize", "cumul",
++        "rdiff_from"), collapse = c("", "daily", "weekly", "monthly", "quarterly",
++        "annual"), sort = c("desc", "asc"), meta = FALSE,
++        authcode = Quandl.auth(), ...)
 ```
 
 You can start downloading data by only using the `code` argument.
