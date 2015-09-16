@@ -1,0 +1,43 @@
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.align = "center")
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+
+# end setup chunk
+```
+
+# `stl()` function
+
+```{r stl_main, eval = FALSE}
+stl(x, s.window = "periodic")
+# additional arguments removed
+```
+
+with the two mandatory arguments `x`, for the time series data, and `s.window` chosen as *periodic* assuming that the seasonal pattern is constant through time. On the help page of the function is mentioned that `x` should be a `ts` object.
+
+More about the theory behind this function can be found [here](http://cs.wellesley.edu/~cs315/Papers/stl%20statistical%20model.pdf).
+
+As an example we analyze monthly birth rates data for France
+from the *National Institute of Statistics and Economic Studies (France)* database.
+
+```{r birthratefrance}
+births <- Quandl("INSEE/62_001641602_M", type = "ts")
+plot(births)
+```
+
+It is obvious that the birth rates time series exhibits a seasonal pattern and a trend component.
+
+```{r salesstl}
+births_stl <- stl(births, s.window = "periodic")
+# s.window = "periodic" means that we assume the seasonal pattern is constant through time
+
+plot(births_stl)
+```
+
+`stl()` function returns a matrix with the seasonal, trend and remainder component.
+```{r}
+stl_mat <- births_stl$time.series
+head(stl_mat)
+```

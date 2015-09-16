@@ -29,13 +29,13 @@ using Google Finance as database.
 ```
 
 ```
-'data.frame':	1193 obs. of  6 variables:
- $ Date  : Date, format: "2015-09-14" "2015-09-11" ...
- $ Open  : num  86 86.4 85 86.7 81.3 ...
- $ High  : num  86.2 86.4 87 88.2 84.9 ...
- $ Low   : num  85 85.1 84.6 85.4 81.2 ...
- $ Close : num  85.5 86.1 86.5 85.4 84.2 ...
- $ Volume: num  1897 4836 9095 11818 5177 ...
+'data.frame':	1194 obs. of  6 variables:
+ $ Date  : Date, format: "2015-09-15" "2015-09-14" ...
+ $ Open  : num  85.8 86 86.4 85 86.7 ...
+ $ High  : num  87.8 86.2 86.4 87 88.2 ...
+ $ Low   : num  85.8 85 85.1 84.6 85.4 ...
+ $ Close : num  87.7 85.5 86.1 86.5 85.4 ...
+ $ Volume: num  5164 1897 4836 9095 11818 ...
  - attr(*, "freq")= chr "daily"
 ```
 
@@ -46,12 +46,12 @@ using Google Finance as database.
 
 ```
         Date  Open  High   Low Close Volume
-1 2015-09-14 86.00 86.24 84.98 85.55   1897
-2 2015-09-11 86.40 86.40 85.10 86.07   4836
-3 2015-09-10 85.05 87.00 84.60 86.48   9095
-4 2015-09-09 86.70 88.23 85.38 85.38  11818
-5 2015-09-08 81.30 84.87 81.20 84.25   5177
-6 2015-09-07 81.10 81.40 80.66 80.74   3323
+1 2015-09-15 85.85 87.81 85.76 87.65   5164
+2 2015-09-14 86.00 86.24 84.98 85.55   1897
+3 2015-09-11 86.40 86.40 85.10 86.07   4836
+4 2015-09-10 85.05 87.00 84.60 86.48   9095
+5 2015-09-09 86.70 88.23 85.38 85.38  11818
+6 2015-09-08 81.30 84.87 81.20 84.25   5177
 ```
 
 
@@ -61,12 +61,12 @@ using Google Finance as database.
 
 ```
            Date  Open  High   Low Close Volume
-1188 2011-01-10 58.90 59.26 58.43 58.56  13532
-1189 2011-01-07 59.55 60.07 58.83 59.47  15508
-1190 2011-01-06 60.00 61.02 59.70 59.83   8911
-1191 2011-01-05 60.40 60.55 58.42 60.06  21851
-1192 2011-01-04 61.44 61.57 60.09 60.77  30843
-1193 2011-01-03 59.70 61.54 59.70 61.31  19869
+1189 2011-01-10 58.90 59.26 58.43 58.56  13532
+1190 2011-01-07 59.55 60.07 58.83 59.47  15508
+1191 2011-01-06 60.00 61.02 59.70 59.83   8911
+1192 2011-01-05 60.40 60.55 58.42 60.06  21851
+1193 2011-01-04 61.44 61.57 60.09 60.77  30843
+1194 2011-01-03 59.70 61.54 59.70 61.31  19869
 ```
 
 
@@ -78,17 +78,17 @@ using Google Finance as database.
       Date                 Open             High             Low        
  Min.   :2011-01-03   Min.   :  0.00   Min.   : 46.64   Min.   : 43.56  
  1st Qu.:2012-02-28   1st Qu.: 61.19   1st Qu.: 61.78   1st Qu.: 60.50  
- Median :2013-05-06   Median : 72.04   Median : 72.63   Median : 71.30  
- Mean   :2013-05-04   Mean   : 75.42   Mean   : 76.29   Mean   : 74.54  
- 3rd Qu.:2014-07-09   3rd Qu.: 87.61   3rd Qu.: 88.41   3rd Qu.: 86.16  
- Max.   :2015-09-14   Max.   :122.89   Max.   :123.70   Max.   :120.22  
+ Median :2013-05-06   Median : 72.06   Median : 72.64   Median : 71.33  
+ Mean   :2013-05-05   Mean   : 75.43   Mean   : 76.30   Mean   : 74.55  
+ 3rd Qu.:2014-07-09   3rd Qu.: 87.58   3rd Qu.: 88.38   3rd Qu.: 86.14  
+ Max.   :2015-09-15   Max.   :122.89   Max.   :123.70   Max.   :120.22  
                       NA's   :2        NA's   :2        NA's   :2       
      Close            Volume      
  Min.   : 44.94   Min.   :     0  
- 1st Qu.: 61.28   1st Qu.:  5723  
- Median : 71.97   Median :  9479  
- Mean   : 75.44   Mean   : 12352  
- 3rd Qu.: 87.27   3rd Qu.: 15211  
+ 1st Qu.: 61.28   1st Qu.:  5704  
+ Median : 71.97   Median :  9478  
+ Mean   : 75.45   Mean   : 12346  
+ 3rd Qu.: 87.30   3rd Qu.: 15208  
  Max.   :123.00   Max.   :185389  
                                   
 ```
@@ -98,7 +98,7 @@ using Google Finance as database.
 The function call `Quandl("GOOG/FRA_BMW")` without any additional arguments returns a data frame
 with six columns, namely 'Date', 'Open', 'High', 'Low', 'Close' and 'Volume' for
 all available dates. Furthermore, the data frame is returned in descending order.
-Our R object `bmw` ranges from 2011-01-03 to 2015-09-14.
+Our R object `bmw` ranges from 2011-01-03 to 2015-09-15.
 
 If you want to truncate your time series the two arguments `start_date` and `end_date`
 of the `Quandl` function can be used.
@@ -145,7 +145,7 @@ Both arguments `start_date` and `end_date` have to be in the format 'yyyy-mm-dd'
 ```
 
 Comparing both R objects `bmw` and `bmw_2014` we have reduced the observations for each 
-of the columns from 1193 to 252.
+of the columns from 1194 to 252.
 The dates we have data for range from 2014-01-02 to 2014-12-30.
 
 By default, `Quandl()` returns data as class `data.frame` which is not the best
@@ -320,7 +320,7 @@ from **FALSE** to **TRUE**.
   ..$ frequency         : chr "daily"
   ..$ name              : chr "Bayerische Motoren Werke AG (BMW)"
   ..$ description       : chr "Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that focuses on the automobile and motorcyc"| __truncated__
-  ..$ updated           : chr "2015-09-14T20:59:41.739Z"
+  ..$ updated           : chr "2015-09-16T03:26:48.294Z"
   ..$ source_code       : chr "GOOG"
   ..$ code              : chr "GOOG/FRA_BMW"
   ..$ source_name       : chr "Google Finance"

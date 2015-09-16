@@ -12,3 +12,7 @@ This is the summary of my book.
     * [plot() and lines()](RW/plotandlines.md)
     * [Exercises](RW/exercises.md)
     * [Solutions](RW/solutions.md)
+* [Decomposing Time Series](DC/README.md)
+    * [stl()](DC/stl.md)
+    * [Exercises](DC/exercises.md)
+    * [Solutions](DC/solutions.md)
