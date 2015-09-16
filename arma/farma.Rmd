@@ -12,7 +12,10 @@ births <- Quandl("INSEE/62_001641602_M", type = "ts")
 
 # `fArma` package
 
-```{r fArma, message=FALSE}
+Install and/or load the library with the following commands.
+
+```{r fArma, message=FALSE, eval = 2}
+install.packages("fArma") # only necessary if package has not been installed yet
 library(fArma)
 ```
 

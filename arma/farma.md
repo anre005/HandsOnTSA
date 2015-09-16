@@ -2,8 +2,11 @@
 
 # `fArma` package
 
+Install and/or load the library with the following commands.
+
 
 ```r
+> ## install.packages("fArma") # only necessary if package has not been installed yet
 > library(fArma)
 ```
 
@@ -77,7 +80,7 @@ AIC Criterion:        139.14
 ```
 
 Description:
- Wed Sep 16 10:50:13 2015 by user:  
+ Wed Sep 16 14:55:30 2015 by user:  
 ```
 
 ![plot of chunk birthsarma_sum](figure/birthsarma_sum-1.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-2.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-3.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-4.png) 

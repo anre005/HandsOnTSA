@@ -1,0 +1,65 @@
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.height = 7, fig.align = "center")
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+library(Quandl)
+Quandl.auth("x81naq-zMUpwM9fzkhYq")
+Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+bmw <- readRDS("BMW2014.rds")
+# births <- Quandl("INSEE/62_001641602_M", type = "ts")
+# end setup chunk
+```
+
+# plotly Package
+Yo can create easily interactive graphics with the help of the [`plotly`](https://plot.ly/r/) package.
+```{r plotlyload, message = FALSE, warning = FALSE}
+library(plotly)
+```
+
+Using plotly is free if you permit them to publish your plots on their website.
+Nevertheless, you have to create an account and register it in the *R* session.
+
+A starting guide for using the `plotly` package in *R* can be found [here](https://plot.ly/r/getting-started/).
+
+```{r plotlyreg, echo = FALSE}
+Sys.setenv("plotly_username"="anre005")
+Sys.setenv("plotly_api_key"="ma3oawp8wd")
+```
+
+```{r plotlyreg1, eval = FALSE}
+Sys.setenv("plotly_username"="YOUR_USERNAME")
+Sys.setenv("plotly_api_key"="YOUR_API_KEY")
+```
+
+Let's take our `ggplot2` plot we have created in the previous section. 
+Turning this into interactive graphic is very simple thanke to `ggplotly()` function.
+```{r plotly1, results = "asis"}
+p <- autoplot.zoo(bmw_2014_xts, 
+                  main = "BMW OHLC plot with ggplot2",
+                  facets = NULL) + xlab("") +  facet_free()
+gg <- ggplotly(p)
+gg
+```
+
+It is also easy to plot single time series, e.g. the traded volume per day for *BMW*, and even to annotate the plot.
+The help page of the `plot_ly()` function tells us that the data should be a `data.frame`. 
+Again we use our *BMW* `data.frame` from chapter 1.
+
+```{r plotlyann, results='asis'}
+# find the maximum volume
+max_vol <- max(bmw[,"Volume"])
+
+# find the index (rownumber) the maximum volume occurs
+ind <- which(bmw[,"Volume"] == max_vol)
+
+# find the corresponding date
+date_max_vol <- bmw[ind,"Date"]
+
+# plot Volume vs. Date
+p <- plot_ly(bmw, x = Date, y = Volume, type = "bar")
+
+# finally, add annotation
+layout(p, annotations = list(x = date_max_vol, y = max_vol,
+                             text = "Maximum Volume", showarrow = T))
+```

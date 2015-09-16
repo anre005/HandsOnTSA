@@ -1,0 +1,4 @@
+# Advanced Time Series Visualization
+
+This chapter is intended to give a very short overview about the more advanced plotting possibilities, static or interactive, *R* offers for time series.
+A more detailed overview structured in a timeline manner can be found [here](http://timelyportfolio.github.io/rCharts_time_series/history.html).

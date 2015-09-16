@@ -1,0 +1,41 @@
+
+
+# `fGarch` package
+
+The main function in this package is the `garchFit()` function.
+
+
+```r
+> garchFit(formula = ~ garch(1, 1), data = dem2gbp, 
++          cond.dist = c("norm", "snorm", "ged", "sged", "std", "sstd", 
++                        "snig", "QMLE"), 
++           include.mean = TRUE,
++           leverage = NULL, trace = TRUE, ...)
+> # additional arguments removed 
+```
+
+The `garchFit()` function fits an so called *ARMA - GARCH* model to the data 
+where the residuals of an ARMA process are modelled with a GARCH approach.
+$$
+\begin{align*}
+  x_t &= \mu + \sum\limits_{i = 1}^p a_i x_{t-i} + \sum \limits_{j = 1}^q b_j \epsilon_{t-j} + \epsilon_t \\ \\
+  \epsilon_t &= \sigma_t z_t  \\ \\
+  z_t &\sim D_{\nu}(0,1)   \\ \\
+  \sigma_t^2 &= \omega + \sum\limits_{i = 1}^m \alpha_i \epsilon_{t-i}^2 + \sum\limits_{j = 1}^n \beta_j \sigma_{t-j}^2,
+\end{align*}
+$$
+
+where \\(D_{\nu}(0,1)\\) is the probability density function of the innovations with zero mean and unit variance, 
+\\(\nu\\) represents the optional parameter of the distribution if choosing a distribution other than normal.
+
+By default, the orders \\(p\\) and \\(q\\) of the ARMA model are set to zero but \\(\mu\\) is included.
+The GARCH orders \\(m\\) and \\(n\\) are set to 1 and the innovations \\(z\\) are assumed to be normal,
+
+$$
+\begin{align*}
+  x_t &= \mu + \epsilon_t \\ \\
+  \epsilon_t &= \sigma_t z_t  \\ \\
+  z_t &\sim N(0,1)   \\ \\
+  \sigma_t^2 &= \omega + \alpha_1 \epsilon_{t-1}^2 +  \beta_1 \sigma_{t-1}^2.
+\end{align*}
+$$

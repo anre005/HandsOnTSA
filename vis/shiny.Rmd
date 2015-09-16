@@ -1,0 +1,21 @@
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.height = 7, fig.align = "center")
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+library(Quandl)
+Quandl.auth("x81naq-zMUpwM9fzkhYq")
+Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+bmw <- readRDS("BMW2014.rds")
+# births <- Quandl("INSEE/62_001641602_M", type = "ts")
+# end setup chunk
+```
+
+# shiny and rCharts Packages
+
+With the [`shiny`](http://shiny.rstudio.com/) package it is possible to develop web applications directly in *R*.
+
+The [`rCharts`](http://rcharts.io/) package uses various Javascript libraries to create interactive visualizations from the *R* console.
+
+You can find an examplary shiny app for displaying a combination of candlestick chart for OHLC data and bar plot for volume data 
+[here](https://anre.shinyapps.io/shinyQuandl).

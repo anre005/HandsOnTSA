@@ -1,0 +1,38 @@
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.height = 7, fig.align = "center")
+# See yihui.name/knitr/options for more Knitr options.
+##### Put other setup R code here
+library(Quandl)
+Quandl.auth("x81naq-zMUpwM9fzkhYq")
+Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+# births <- Quandl("INSEE/62_001641602_M", type = "ts")
+# end setup chunk
+```
+
+# ggplot2 Package
+
+The `autoplot.zoo()` function in the `zoo` package provides an easy-to-use interface
+to the very powerful [`ggplot2`](http://ggplot2.org/) package which provides a plotting system for *R*
+based on the [grammar of graphics](http://www.amazon.de/The-Grammar-Graphics-Statistics-Computing/dp/0387245448).
+
+```{r bmwxts, include=FALSE}
+bmw_2014_xts <- Quandl("GOOG/FRA_BMW",
+                       start_date = "2014-01-01", end_date = "2014-12-31",
+                       sort = "asc", type = "xts")
+```
+
+```{r autoplotzoo1}
+library(ggplot2)
+
+autoplot.zoo(bmw_2014_xts, main = "BMW OHLC plot with ggplot2") + xlab("")
+```
+
+We see that the scaling on the y axis is not correct. 
+We use the `facet_free()` function to allow for different scales on the multiple y axis.
+
+```{r autoplotzoo2}
+autoplot.zoo(bmw_2014_xts, 
+             main = "BMW OHLC plot with ggplot2",
+             facets = NULL) + xlab("") +  facet_free()
+```
