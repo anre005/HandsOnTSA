@@ -1,16 +1,20 @@
-# Summary
-This is the summary of my book.
+# TOC
+Table of Contents
 
 * [Quandl](Quandl/README.md)
     * [Access Quandl Databases](Quandl/Quandlacc.md)
     * [Installation and Authentication](Quandl/Quandlauth.md)
     * [Downloading Historical Data](Quandl/Quandldown.md)
         * [Using Additional Arguments of Quandl() Function](Quandl/add.md)
+    * [Querying Quandl Databases from R Console](Quandl/console.md)
+* [Basic Visualization of Time Series](basevis/README.md)
+    * [plot()](basevis/plot.md)
+    * [lines()](basevis/lines.md)
+    * [legend()](basevis/legend.md)
 * [Random Walk and White Noise](RW/RW.md)
     * [rnorm()](RW/rnorm.md)
     * [set.seed()](RW/seed.md)
     * [cumsum()](RW/cumsum.md)
-    * [plot() and lines()](RW/plotandlines.md)
     * [Exercises](RW/exercises.md)
     * [Solutions](RW/solutions.md)
 * [Decomposing Time Series](DC/README.md)

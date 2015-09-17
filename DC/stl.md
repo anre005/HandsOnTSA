@@ -28,7 +28,8 @@ It is obvious that the birth rates time series exhibits a seasonal pattern and a
 
 ```r
 > births_stl <- stl(births, s.window = "periodic")
-> # s.window = "periodic" means that we assume the seasonal pattern is constant through time
+> # s.window = "periodic" means that we assume the seasonal pattern
+> # is constant through time
 > 
 > plot(births_stl)
 ```

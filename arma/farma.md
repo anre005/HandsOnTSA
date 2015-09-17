@@ -80,10 +80,10 @@ AIC Criterion:        139.14
 ```
 
 Description:
- Wed Sep 16 23:59:39 2015 by user:  
+ Thu Sep 17 14:11:56 2015 by user:  
 ```
 
-![plot of chunk birthsarma_sum](figure/birthsarma_sum-1.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-2.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-3.png) ![plot of chunk birthsarma_sum](figure/birthsarma_sum-4.png) 
+<img src="figure/birthsarma_sum-1.png" title="plot of chunk birthsarma_sum" alt="plot of chunk birthsarma_sum" style="display: block; margin: auto;" /><img src="figure/birthsarma_sum-2.png" title="plot of chunk birthsarma_sum" alt="plot of chunk birthsarma_sum" style="display: block; margin: auto;" /><img src="figure/birthsarma_sum-3.png" title="plot of chunk birthsarma_sum" alt="plot of chunk birthsarma_sum" style="display: block; margin: auto;" /><img src="figure/birthsarma_sum-4.png" title="plot of chunk birthsarma_sum" alt="plot of chunk birthsarma_sum" style="display: block; margin: auto;" />
 
 
 One can also forecast the time series with the `predict()` function. By default ten values are predicted.
@@ -93,7 +93,7 @@ One can also forecast the time series with the `predict()` function. By default 
 > predict(births_arma)
 ```
 
-![plot of chunk predictfun](figure/predictfun-1.png) 
+<img src="figure/predictfun-1.png" title="plot of chunk predictfun" alt="plot of chunk predictfun" style="display: block; margin: auto;" />
 
 ```
 $pred

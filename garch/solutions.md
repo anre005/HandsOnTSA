@@ -39,32 +39,32 @@ Cols: c("Date", "Open", "High", "Low", "Close", "Volume", "Adjusted Close")
 > plot(close_prices, type = "l") # Random Walk (with drift)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```r
 > plot(log(close_prices), type = "l") # Random Walk (with drift)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png) 
+<img src="figure/unnamed-chunk-1-2.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```r
 > log_returns <- diff(log(close_prices))
 > plot(log_returns, type = "l")
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-3.png) 
+<img src="figure/unnamed-chunk-1-3.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```r
 > acf(log_returns)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-4.png) 
+<img src="figure/unnamed-chunk-1-4.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```r
 > acf(log_returns^2)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-5.png) 
+<img src="figure/unnamed-chunk-1-5.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```r
 > # Solution Exercise 3

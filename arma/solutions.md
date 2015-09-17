@@ -65,7 +65,7 @@
 > predict(arma22, n.ahead = 6)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```
 $pred
@@ -100,7 +100,7 @@ Frequency = 1
 > predict(arma22, n.ahead = 12)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png) 
+<img src="figure/unnamed-chunk-1-2.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 ```
 $pred

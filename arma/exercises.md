@@ -1,6 +1,6 @@
 # Exercises
 1.  **ARMA Model Fitting**
-    - Use the detrended and seasonally adjusted time series from exercise 2 from chapter *Decomposing*. 
+    - Use the detrended and seasonally adjusted time series from exercise 2 from chapter *Decomposing Time Series*. 
       Fit an AR(1), MA(1), ARMA(1,1) and ARMA(2,2) model to the data using ML estimation.
       Choose the best out of these four approaches using the Akaike Information Criteria.
 

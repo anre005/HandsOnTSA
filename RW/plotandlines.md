@@ -9,7 +9,7 @@ The mandatory argument **x** describes the coordinates of the points in the plot
 The three dots **...** stand for further graphical parameters which can be passed to methods. 
 Additional informations can be found at the help page of the `plot()` function (`?plot` in the R console).
 
-Now suppose we have downloaded historical closing prices for 2014 for the BMW equity from Frankfurt Stock Exchange as a `data.frame`.
+Now suppose we have downloaded historical closing prices for 2014 for the bmw_2014 equity from Frankfurt Stock Exchange as a `data.frame`.
 (See chapter *Using Quandl with R*)
 
 
@@ -20,13 +20,13 @@ the second explicitly specifies \\(x\\) and \\(y\\) values.
 
 
 ```r
-plot(x = bmw[,"Close"])
+plot(x = bmw_2014[,"Close"])
 ```
 
 ![plot of chunk plotdefault1](figure/plotdefault1-1.png) 
 
 ```r
-plot(x = bmw[,"Date"], y = bmw[,"Close"])
+plot(x = bmw_2014[,"Date"], y = bmw_2014[,"Close"])
 ```
 
 ![plot of chunk plotdefault1](figure/plotdefault1-2.png) 
@@ -42,7 +42,7 @@ and remove the labels for both the \\(x\\) - axis and \\(y\\) - axis.
 
 
 ```r
-plot(x = bmw[,"Date"], y = bmw[,"Close"], type = "l", xlab = "", ylab = "")
+plot(x = bmw_2014[,"Date"], y = bmw_2014[,"Close"], type = "l", xlab = "", ylab = "")
 ```
 
 ![plot of chunk lineplot1](figure/lineplot1-1.png) 
@@ -51,8 +51,8 @@ Now we add a title to the plot, change the linetype from solid to dashed and col
 
 
 ```r
-plot(x = bmw[,"Date"], y = bmw[,"Close"], type = "l", xlab = "", ylab = "",
-     main = "Closing Prices BMW 2014", lty = "dashed", col = "red")
+plot(x = bmw_2014[,"Date"], y = bmw_2014[,"Close"], type = "l", xlab = "", ylab = "",
+     main = "Closing Prices bmw_2014 2014", lty = "dashed", col = "red")
 ```
 
 ![plot of chunk lineplottitle](figure/lineplottitle-1.png) 
@@ -66,11 +66,11 @@ For a more readable graphic we also add a legend and set the limity for the \\(y
 
 
 ```r
-plot(x = bmw[,"Date"], y = bmw[,"Close"], type = "l", xlab = "", ylab = "",
-     main = "OHLC Prices BMW 2014", ylim = c(70,100))
-lines(x = bmw[,"Date"], y = bmw[,"Open"], col = "green", lty = "dotted")
-lines(x = bmw[,"Date"], y = bmw[,"High"], col = "red", lty = "dotdash")
-lines(x = bmw[,"Date"], y = bmw[,"Low"], col = "blue", lty = "longdash")
+plot(x = bmw_2014[,"Date"], y = bmw_2014[,"Close"], type = "l", xlab = "", ylab = "",
+     main = "OHLC Prices bmw_2014 2014", ylim = c(70,100))
+lines(x = bmw_2014[,"Date"], y = bmw_2014[,"Open"], col = "green", lty = "dotted")
+lines(x = bmw_2014[,"Date"], y = bmw_2014[,"High"], col = "red", lty = "dotdash")
+lines(x = bmw_2014[,"Date"], y = bmw_2014[,"Low"], col = "blue", lty = "longdash")
 
 legend("bottom", 
        legend = c("Open", "High", "Low", "Close"),

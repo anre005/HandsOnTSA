@@ -4,5 +4,11 @@
         "anchors",
         "toggle-chapters"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {
+        "fontSettings": {
+            "theme": "white",
+            "family": "serif",
+            "size": 2
+        }
+    }
 }

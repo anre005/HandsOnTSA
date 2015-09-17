@@ -11,12 +11,12 @@
     - Plot the log - returns. What kind of process would be appropriate?
     - Plot the acf `acf()` of the log - returns and the squared log - returns.
     
-3. **Fitting a GARCH model to historical data**
+3. **Fitting a GARCH Model to Historical Data**
     - Use the `garchFit()` function to fit a GARCH(1,1) model (slide 39) to the log - returns.
     - Replace the normal distribution with a Student - t - distribution.
     - Which model explains the data better?
     
-4. **Forecasting Volatility (maybe Homework)**
+4. **Forecasting Volatility (Homework)**
     - Write your own function `vola_forecast()` for forecasting volatility of the two models from exercise 3.
     - You can use the following forecasting relations for a GARCH(1,1) model
       where \\(\mathcal{F}_T\\) is the information set until timestamp \\(T\\):
@@ -27,6 +27,7 @@ $$
                                             (\alpha_1 + \beta_1)^{h-1} E\left(\sigma_{T+1}|\mathcal{F}_T\right),
 \end{align*}
 $$
+    - **Note**: You can check your results by comparing them with the output from the `predict()` function in package `fGarch`.
 
 
 ```r

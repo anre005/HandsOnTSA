@@ -1,0 +1,23 @@
+# Querying Quandl Databases from R Console
+As mentioned before you can find codes for datasets directly on the [Quandl website](https://www.quandl.com) 
+or you can use the `Quandl.search()` function. 
+It has only one mandatory argument `query` which you have to use to enter your search term.
+Optional arguments of `Quandl.search()` are 
+
+* `page`: specifies which page of the search results should be returned
+* `source`: allows the user to specify a database which should be queried
+* `silent`: if set to **FALSE** first three results are printed to the console
+* `authcode`: if not set before with `Quandl.auth` function you can enter your API token here
+
+An example call to `Quandl.search()` to find historical data for International Business Machines (IBM) by using
+the Yahoo Finance Database is given below.
+
+```{r yahoo}
+ibm <- Quandl.search("IBM", source = "YAHOO", silent = TRUE)
+```
+
+The API call above returns a list of length 16 where the code needed for `Quandl` function and several other details can be extracted.
+
+```{r yahooibm}
+str(ibm)
+```

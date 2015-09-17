@@ -31,6 +31,18 @@ Cols: c("Date", "Value")
 ```r
 > # Solution Exercise 2
 > sales <- Quandl("FRED/RETAILSMNSA", type = "ts")
+> 
 > sales_stl <- stl(sales, s.window = "periodic")
+> plot(sales_stl)
+```
+
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
+
+```r
 > sales_adj <- sales_stl$time.series[,"remainder"]
+> head(sales_adj)
+```
+
+```
+[1]   8870.8853  10793.2752  -9851.5855   -542.1228 -10187.8298  -3183.1963
 ```

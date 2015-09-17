@@ -7,7 +7,7 @@
       which are not seasonally adjusted, from the *Federal Reserve Economic Data* database (FRED)
       either from the Quandl website or the `R` console.
     - Download all available data for this time series specifying the `type` argument of the 
-      `Quandl()` function so it matches the recommendation from the `stl()` help page.
+      `Quandl()` function that it matches the recommendation from the `stl()` help page.
     
 2.  **Decomposing Time Series**
     - Decompose your time series from exercise 1 with `stl()` function

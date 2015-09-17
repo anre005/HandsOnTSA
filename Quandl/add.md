@@ -7,7 +7,7 @@
 The function call `Quandl("GOOG/FRA_BMW")` without any additional arguments returns a data frame
 with six columns, namely 'Date', 'Open', 'High', 'Low', 'Close' and 'Volume' for
 all available dates. Furthermore, the data frame is returned in descending order.
-Our R object `bmw` ranges from 2011-01-03 to 2015-09-15.
+Our R object `bmw` ranges from 2011-01-03 to 2015-09-16.
 
 If you want to truncate your time series the two arguments `start_date` and `end_date`
 of the `Quandl` function can be used.
@@ -55,7 +55,7 @@ Both arguments `start_date` and `end_date` have to be in the format 'yyyy-mm-dd'
 ```
 
 Comparing both R objects `bmw` and `bmw_2014` we have reduced the observations for each 
-of the columns from 1194 to 252.
+of the columns from 1195 to 252.
 The dates we have data for range from 2014-01-02 to 2014-12-30.
 
 By default, `Quandl()` returns data as class `data.frame` which is not the best
@@ -232,7 +232,7 @@ from **FALSE** to **TRUE**.
   ..$ frequency         : chr "daily"
   ..$ name              : chr "Bayerische Motoren Werke AG (BMW)"
   ..$ description       : chr "Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that focuses on the automobile and motorcyc"| __truncated__
-  ..$ updated           : chr "2015-09-16T03:26:48.294Z"
+  ..$ updated           : chr "2015-09-17T03:40:23.790Z"
   ..$ source_code       : chr "GOOG"
   ..$ code              : chr "GOOG/FRA_BMW"
   ..$ source_name       : chr "Google Finance"

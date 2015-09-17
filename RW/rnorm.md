@@ -18,7 +18,7 @@ A function call to get 1000 normal distribution random numbers with mean 10 and 
 rnorm(n = 1000, mean = 10, sd = 2) 
 ```
 
-**Note**: Besides random number generation basic `R` provides probability distribution functions, density functions and quantile functions
+**Note**: Besides random number generation `R` provides probability distribution functions, density functions and quantile functions
 for most of the common distributions. 
 The following naming scheme is used:
 
@@ -29,5 +29,5 @@ The following naming scheme is used:
 
 where *dist* indicates the desired distribution. 
 
-An overview over the base `R` functionality and distribution provided by additional CRAN packages can be found
+An overview over the base `R` functionality and distributions provided by additional CRAN packages can be found
 [here](https://cran.r-project.org/web/views/Distributions.html).
