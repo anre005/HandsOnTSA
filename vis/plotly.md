@@ -8,9 +8,9 @@ Yo can create easily interactive graphics with the help of the [`plotly`](https:
 ```
 
 Using plotly is free if you permit them to publish your plots on their website.
-Nevertheless, you have to create an account and register it in the *R* session.
+Nevertheless, you have to create an account and register it in the `R` session.
 
-A starting guide for using the `plotly` package in *R* can be found [here](https://plot.ly/r/getting-started/).
+A starting guide for using the `plotly` package in `R` can be found [here](https://plot.ly/r/getting-started/).
 
 
 
@@ -32,10 +32,10 @@ Turning this into interactive graphic is very simple thanke to `ggplotly()` func
 ```
 
 ```
-Success! Created a new plotly here -> https://plot.ly/~anre005/457
+Success! Created a new plotly here -> https://plot.ly/~anre005/486
 ```
 
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~anre005/457.embed" width="800" frameBorder="0"></iframe>
+<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~anre005/486.embed" width="800" frameBorder="0"></iframe>
 
 It is also easy to plot single time series, e.g. the traded volume per day for *BMW*, and even to annotate the plot.
 The help page of the `plot_ly()` function tells us that the data should be a `data.frame`. 
@@ -61,7 +61,7 @@ Again we use our *BMW* `data.frame` from chapter 1.
 ```
 
 ```
-Success! Created a new plotly here -> https://plot.ly/~anre005/459
+Success! Created a new plotly here -> https://plot.ly/~anre005/488
 ```
 
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~anre005/459.embed" width="800" frameBorder="0"></iframe>
+<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~anre005/488.embed" width="800" frameBorder="0"></iframe>

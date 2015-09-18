@@ -18,9 +18,9 @@ library(plotly)
 ```
 
 Using plotly is free if you permit them to publish your plots on their website.
-Nevertheless, you have to create an account and register it in the *R* session.
+Nevertheless, you have to create an account and register it in the `R` session.
 
-A starting guide for using the `plotly` package in *R* can be found [here](https://plot.ly/r/getting-started/).
+A starting guide for using the `plotly` package in `R` can be found [here](https://plot.ly/r/getting-started/).
 
 ```{r plotlyreg, echo = FALSE}
 Sys.setenv("plotly_username"="anre005")

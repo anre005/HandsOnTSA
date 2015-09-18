@@ -20,6 +20,7 @@
     - Write your own function `vola_forecast()` for forecasting volatility of the two models from exercise 3.
     - You can use the following forecasting relations for a GARCH(1,1) model
       where \\(\mathcal{F}_T\\) is the information set until timestamp \\(T\\):
+      
 $$    
 \begin{align*}
         E\left(\sigma_{T+1}|\mathcal{F}_T\right) &= \omega + \alpha_1 \epsilon_T^2 + \beta_1 \sigma_T^2 \\ \\
@@ -27,7 +28,7 @@ $$
                                             (\alpha_1 + \beta_1)^{h-1} E\left(\sigma_{T+1}|\mathcal{F}_T\right),
 \end{align*}
 $$
-    - **Note**: You can check your results by comparing them with the output from the `predict()` function in package `fGarch`.
+    - **Note**: You can check your results by comparing them with the output from the `predict()` function in package `fGarch`. 
 
 
 ```r

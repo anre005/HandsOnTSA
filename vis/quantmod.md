@@ -49,7 +49,7 @@ Now we are ready to produce OHLC plots with `chartSeries()` using the default se
 > chartSeries(bmw_2014_xts)
 ```
 
-![plot of chunk chartdef](figure/chartdef-1.png) 
+<img src="figure/chartdef-1.png" title="plot of chunk chartdef" alt="plot of chunk chartdef" style="display: block; margin: auto;" />
 
 The function call above produces a [candlestick plot](https://en.wikipedia.org/wiki/Candlestick_chart) for our OHLC data.
 
@@ -62,7 +62,7 @@ We can change the title of the plot and turn the background from black to white 
 +             theme = chartTheme("white"))
 ```
 
-![plot of chunk chart1](figure/chart1-1.png) 
+<img src="figure/chart1-1.png" title="plot of chunk chart1" alt="plot of chunk chart1" style="display: block; margin: auto;" />
 
 We can even zoom into the chart. Assume that we are interested only in the data for September 2014.
 
@@ -71,7 +71,7 @@ We can even zoom into the chart. Assume that we are interested only in the data 
 > zoomChart("2014-09::2014-09")
 ```
 
-![plot of chunk chartzoom1](figure/chartzoom1-1.png) 
+<img src="figure/chartzoom1-1.png" title="plot of chunk chartzoom1" alt="plot of chunk chartzoom1" style="display: block; margin: auto;" />
 
 The current active plot is the one for September 2014 data,
 to choose another zoom range we have to first set the active plot back to our original data
@@ -88,7 +88,7 @@ We can now set a new time span, for example the second half of the year.
 > zoomChart("2014-07::")
 ```
 
-![plot of chunk chartzoom2](figure/chartzoom2-1.png) 
+<img src="figure/chartzoom2-1.png" title="plot of chunk chartzoom2" alt="plot of chunk chartzoom2" style="display: block; margin: auto;" />
 
 For more details about the usage of `chartSeries()` function have a look at the help page
 or browse to the [quantmod package's website](www.quantmod.com).
