@@ -24,8 +24,8 @@ Quandl(code, type = c("raw", "ts", "zoo", "xts", "timeSeries"),
 * `transform`: apply Quandl API data transformations
 * `order`: select if data returned by `R` is in ascending or descending format
 * `meta`: adds meta data as an attribute to the returned data
-* `force_irregular`: if set to `TRUE`, forces the index
-                     of the data to be of date format `yyyy-mm-dd`
+* `force_irregular`: if set to `TRUE`, forces the index of the data to be of date format `yyyy-mm-dd`
+* `...`: additional named values that are interpreted as Quandl API parameters. Please see [https://www.quandl.com/docs/api#retrieve-data-and-metadata](https://www.quandl.com/docs/api#retrieve-data-and-metadata) for a full list of parameters.
                      
 You can start downloading data by only using the `code` argument.
 Codes can be found on the website of [Quandl](https://www.quandl.com) 

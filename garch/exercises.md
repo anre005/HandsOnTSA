@@ -17,7 +17,7 @@
     - Which model explains the data better?
     
 4. **Forecasting Volatility (Homework)**
-    - Write your own function `vola_forecast()` for k - step ahead forecasts \\(h^2_T(k)\\), with forecast origin \\(T\\),
+    - Write your own function `vola_forecast()` for k - step ahead forecasts \\(h_T(k)\\), with forecast origin \\(T\\),
       of the volatility for the two models from exercise 3.
     - **Note**: 
         * You can check your results by comparing them with the output from the `predict()` function in package `fGarch`
