@@ -5,8 +5,15 @@ opts_knit$set(base.dir='./', fig.path='', out.format='md')
 opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.height = 7, fig.align = "center")
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
+library(Quandl)
+Quandl.api_key("x81naq-zMUpwM9fzkhYq")
 library(fArma)
 Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
+sales <- Quandl("FRED/RETAILSMNSA", type = "ts")
+
+sales_stl <- stl(sales, s.window = "periodic")
+
+sales_adj <- sales_stl$time.series[,"remainder"]
 # end setup chunk
 ```
 
