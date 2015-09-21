@@ -1,4 +1,5 @@
 {
+    "generator": "site",
     "plugins": [
         "mathjax",
         "anchors",
