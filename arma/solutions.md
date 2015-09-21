@@ -97,8 +97,7 @@ Error in polyroot(c(1, arma22@fit$coef[c("ma1", "ma2")])): Objekt 'arma22' nicht
 ```
 
 ```
-Error in predict(arma22, n.ahead = 6): Fehler bei der Auswertung des Argumentes 'object' bei der Methodenauswahl
-für Funktion 'predict': Fehler: Objekt 'arma22' nicht gefunden
+Error in predict(arma22, n.ahead = 6): Objekt 'arma22' nicht gefunden
 ```
 
 ```r
@@ -106,6 +105,5 @@ für Funktion 'predict': Fehler: Objekt 'arma22' nicht gefunden
 ```
 
 ```
-Error in predict(arma22, n.ahead = 12): Fehler bei der Auswertung des Argumentes 'object' bei der Methodenauswahl
-für Funktion 'predict': Fehler: Objekt 'arma22' nicht gefunden
+Error in predict(arma22, n.ahead = 12): Objekt 'arma22' nicht gefunden
 ```

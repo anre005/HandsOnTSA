@@ -83,4 +83,4 @@ zoomChart("2014-07::")
 ```
 
 For more details about the usage of `chartSeries()` function have a look at the help page
-or browse to the [quantmod package's website](www.quantmod.com).
+or browse to the [quantmod package's website](http://www.quantmod.com/).

@@ -91,4 +91,4 @@ We can now set a new time span, for example the second half of the year.
 <img src="figure/chartzoom2-1.png" title="plot of chunk chartzoom2" alt="plot of chunk chartzoom2" style="display: block; margin: auto;" />
 
 For more details about the usage of `chartSeries()` function have a look at the help page
-or browse to the [quantmod package's website](www.quantmod.com).
+or browse to the [quantmod package's website](http://www.quantmod.com/).

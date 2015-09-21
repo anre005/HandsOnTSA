@@ -2,7 +2,8 @@
   "plugins": [
       "mathjax",
       "anchors",
-      "toggle-chapters"
+      "toggle-chapters",
+      "printlinks"
   ],
   "pluginsConfig": {
       "fontSettings": {

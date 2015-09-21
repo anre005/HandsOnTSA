@@ -128,7 +128,7 @@ Call:
 
 Mean and Variance Equation:
  data ~ garch(1, 1)
-<environment: 0x9471ce0>
+<environment: 0x53087b8>
  [data = log_returns]
 
 Conditional Distribution:
@@ -153,7 +153,7 @@ Log Likelihood:
  4171.777    normalized:  3.318836 
 
 Description:
- Mon Sep 21 16:59:09 2015 by user: anre005 
+ Mon Sep 21 20:27:49 2015 by user:  
 
 
 Standardised Residuals Tests:
@@ -191,7 +191,7 @@ Call:
 
 Mean and Variance Equation:
  data ~ garch(1, 1)
-<environment: 0xa556040>
+<environment: 0x6acc4b8>
  [data = log_returns]
 
 Conditional Distribution:
@@ -217,7 +217,7 @@ Log Likelihood:
  4194.235    normalized:  3.336702 
 
 Description:
- Mon Sep 21 16:59:09 2015 by user: anre005 
+ Mon Sep 21 20:27:49 2015 by user:  
 
 
 Standardised Residuals Tests:
