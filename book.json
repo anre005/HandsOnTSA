@@ -1,5 +1,4 @@
 {
-  "theme": "gitbook-theme-clarity",
   "plugins": [
       "mathjax",
       "anchors",
