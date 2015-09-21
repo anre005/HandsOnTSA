@@ -17,17 +17,17 @@
     - Which model explains the data better?
     
 4. **Forecasting Volatility (Homework)**
-    - Write your own function `vola_forecast()` for k - step ahead forecasts \\(h_T(k)\\), with forecast origin \\(T\\),
+    - Write your own function `vola_forecast()` for k - step ahead forecasts \\(\sigma_T(k)\\), with forecast origin \\(T\\),
       of the volatility for the two models from exercise 3.
     - **Note**: 
         * You can check your results by comparing them with the output from the `predict()` function in package `fGarch`
-          which returns values of \\(h_T(k)\\) . 
+          which returns values of \\(\sigma_T(k)\\) . 
         * You can use the following forecasting relations for a GARCH(1,1) model:
 $$
 \begin{align*}
-        h^2_T(1) &= \omega + \alpha_1 \epsilon_T^2 + \beta_1 \sigma_T^2 \\ \\
-        h^2_T(k) &= \dfrac{\omega (1 - (\alpha_1 + \beta_1)^{k-1})}{1 - \alpha_1 + \beta_1} + 
-                                            (\alpha_1 + \beta_1)^{k-1} h^2_T(1)
+        \sigma^2_T(1) &= \omega + \alpha_1 \epsilon_T^2 + \beta_1 \sigma_T^2 \\ \\
+        \sigma^2_T(k) &= \dfrac{\omega (1 - (\alpha_1 + \beta_1)^{k-1})}{1 - \alpha_1 + \beta_1} + 
+                                            (\alpha_1 + \beta_1)^{k-1} \sigma^2_T(1)
 \end{align*}
 $$
 
