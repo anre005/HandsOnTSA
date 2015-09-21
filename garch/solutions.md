@@ -114,28 +114,131 @@ Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 > garch_fit <- garchFit(formula = ~ garch(1,1), data = log_returns,
 +                       include.mean = FALSE, trace = FALSE)
 > 
-> summary(garch_fit)
+> fGarch::summary(garch_fit)
 ```
 
 ```
-Length  Class   Mode 
-     1 fGARCH     S4 
+
+Title:
+ GARCH Modelling 
+
+Call:
+ garchFit(formula = ~garch(1, 1), data = log_returns, include.mean = FALSE, 
+    trace = FALSE) 
+
+Mean and Variance Equation:
+ data ~ garch(1, 1)
+<environment: 0x9471ce0>
+ [data = log_returns]
+
+Conditional Distribution:
+ norm 
+
+Coefficient(s):
+     omega      alpha1       beta1  
+3.4478e-06  1.3105e-01  8.3410e-01  
+
+Std. Errors:
+ based on Hessian 
+
+Error Analysis:
+        Estimate  Std. Error  t value Pr(>|t|)    
+omega  3.448e-06   8.287e-07    4.161 3.17e-05 ***
+alpha1 1.310e-01   2.094e-02    6.257 3.92e-10 ***
+beta1  8.341e-01   2.310e-02   36.109  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Log Likelihood:
+ 4171.777    normalized:  3.318836 
+
+Description:
+ Mon Sep 21 16:59:09 2015 by user: anre005 
+
+
+Standardised Residuals Tests:
+                                Statistic p-Value     
+ Jarque-Bera Test   R    Chi^2  105.2718  0           
+ Shapiro-Wilk Test  R    W      0.980603  6.029324e-12
+ Ljung-Box Test     R    Q(10)  10.61118  0.3886017   
+ Ljung-Box Test     R    Q(15)  14.0323   0.523081    
+ Ljung-Box Test     R    Q(20)  16.99841  0.6530769   
+ Ljung-Box Test     R^2  Q(10)  18.928    0.04118679  
+ Ljung-Box Test     R^2  Q(15)  25.2936   0.04613669  
+ Ljung-Box Test     R^2  Q(20)  28.62356  0.0954406   
+ LM Arch Test       R    TR^2   20.3511   0.06072906  
+
+Information Criterion Statistics:
+      AIC       BIC       SIC      HQIC 
+-6.632898 -6.620639 -6.632910 -6.628291 
 ```
 
 ```r
 > garch_fit_std <- garchFit(formula = ~ garch(1,1), data = log_returns,
 +                           cond.dist = "std", include.mean = FALSE, trace = FALSE)
 > 
-> summary(garch_fit_std)
+> fGarch::summary(garch_fit_std)
 ```
 
 ```
-Length  Class   Mode 
-     1 fGARCH     S4 
+
+Title:
+ GARCH Modelling 
+
+Call:
+ garchFit(formula = ~garch(1, 1), data = log_returns, cond.dist = "std", 
+    include.mean = FALSE, trace = FALSE) 
+
+Mean and Variance Equation:
+ data ~ garch(1, 1)
+<environment: 0xa556040>
+ [data = log_returns]
+
+Conditional Distribution:
+ std 
+
+Coefficient(s):
+     omega      alpha1       beta1       shape  
+3.4572e-06  1.3286e-01  8.3737e-01  5.7242e+00  
+
+Std. Errors:
+ based on Hessian 
+
+Error Analysis:
+        Estimate  Std. Error  t value Pr(>|t|)    
+omega  3.457e-06   1.046e-06    3.305  0.00095 ***
+alpha1 1.329e-01   2.686e-02    4.946 7.58e-07 ***
+beta1  8.374e-01   2.784e-02   30.075  < 2e-16 ***
+shape  5.724e+00   1.027e+00    5.574 2.49e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Log Likelihood:
+ 4194.235    normalized:  3.336702 
+
+Description:
+ Mon Sep 21 16:59:09 2015 by user: anre005 
+
+
+Standardised Residuals Tests:
+                                Statistic p-Value     
+ Jarque-Bera Test   R    Chi^2  105.7119  0           
+ Shapiro-Wilk Test  R    W      0.9805931 5.976025e-12
+ Ljung-Box Test     R    Q(10)  10.70223  0.3811829   
+ Ljung-Box Test     R    Q(15)  14.11272  0.5169982   
+ Ljung-Box Test     R    Q(20)  17.0778   0.6479163   
+ Ljung-Box Test     R^2  Q(10)  19.13703  0.03855632  
+ Ljung-Box Test     R^2  Q(15)  25.5461   0.04307303  
+ Ljung-Box Test     R^2  Q(20)  28.90868  0.08957304  
+ LM Arch Test       R    TR^2   20.5752   0.05695793  
+
+Information Criterion Statistics:
+      AIC       BIC       SIC      HQIC 
+-6.667041 -6.650695 -6.667061 -6.660898 
 ```
 
 ```r
-> # The model with lower AIC, BIC, ...
+> # The model with lower AIC or BIC or SIC or HQIC
 > 
 > garch_fit@fit$ics
 ```
