@@ -3,13 +3,17 @@
         "mathjax",
         "anchors",
         "toggle-chapters",
-        "printlinks"
+        "printlinks",
+        "github"
     ],
     "pluginsConfig": {
         "fontSettings": {
             "theme": "white",
             "family": "serif",
             "size": 2
+        },
+        "github": {
+            "url": "https://github.com/anre005/HandsOnTSA"
         }
     }
 }
