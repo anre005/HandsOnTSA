@@ -5,7 +5,8 @@
 # lines()
 
 With the `lines()` function it is possible to plot two or more time series together.
-We want the **Open**, **High**, **Low** and **Close** Prices all together in one plot.
+We want the **Open**, **High**, **Low** and **Close** Prices all together in one plot
+and set the limits for the \\(y\\) - axis to 70 and 100.
 
 
 ```r

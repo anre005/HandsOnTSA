@@ -12,7 +12,7 @@
     - Plot the acf `acf()` of the log - returns and the squared log - returns.
     
 3. **Fitting a GARCH Model to Historical Data**
-    - Use the `garchFit()` function to fit a GARCH(1,1) model (slide 39) to the log - returns.
+    - Use the `garchFit()` function to fit a GARCH(1,1) model to the log - returns.
     - Replace the normal distribution with a Student - t - distribution.
     - Which model explains the data better?
     

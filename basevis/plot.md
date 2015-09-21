@@ -7,12 +7,12 @@ The base `R` `plot()` function is a good starting point for visualization our ti
 ```r
 > plot(x, y, ...)
 ```
-The mandatory argument **x** describes the coordinates of the points in the plot, **y** is optional if **x** is already an appropriate structure. 
-The three dots **...** stand for further graphical parameters which can be passed to methods. 
-Additional informations can be found at the help page of the `plot()` function (`?plot` in the R console).
+The mandatory argument `x` describes the coordinates of the points in the plot, `y` is optional if `x` is already an appropriate structure. 
+The three dots `...` stand for further graphical parameters which can be passed to methods. 
+Additional informations can be found at the help page of the `plot()` function (`?plot` in the `R` console).
 
 Now suppose we have downloaded historical closing prices for 2014 for the *BMW* equity from Frankfurt Stock Exchange as a `data.frame`.
-(See chapter *Using Quandl with R*)
+(See chapter *Using Additional Arguments of `Quandl()` Function*)
 
 
 
@@ -62,5 +62,4 @@ Now we add a title to the plot, change the linetype from solid to dashed and col
 <img src="figure/lineplottitle-1.png" title="plot of chunk lineplottitle" alt="plot of chunk lineplottitle" style="display: block; margin: auto;" />
 
 A list about the available colors can be found [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
-and the different line and shape types are presented [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/)
-in the *Graphical Parameters* section.
+and the different line and shape types are presented [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/).

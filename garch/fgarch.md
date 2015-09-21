@@ -7,10 +7,9 @@ The main function in this package is the `garchFit()` function.
 
 ```r
 > garchFit(formula = ~ garch(1, 1), data = dem2gbp, 
-+          cond.dist = c("norm", "snorm", "ged", "sged", "std", "sstd", 
-+                        "snig", "QMLE"), 
-+           include.mean = TRUE,
-+           leverage = NULL, trace = TRUE, ...)
++          cond.dist = c("norm", "snorm", "ged", "sged",
++                        "std", "sstd", "snig", "QMLE"), 
++          include.mean = TRUE, trace = TRUE, ...)
 > # additional arguments removed 
 ```
 

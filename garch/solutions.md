@@ -113,12 +113,48 @@ Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 > # Solution Exercise 3
 > garch_fit <- garchFit(formula = ~ garch(1,1), data = log_returns,
 +                       include.mean = FALSE, trace = FALSE)
+> 
+> summary(garch_fit)
+```
+
+```
+Length  Class   Mode 
+     1 fGARCH     S4 
+```
+
+```r
 > garch_fit_std <- garchFit(formula = ~ garch(1,1), data = log_returns,
 +                           cond.dist = "std", include.mean = FALSE, trace = FALSE)
 > 
+> summary(garch_fit_std)
+```
+
+```
+Length  Class   Mode 
+     1 fGARCH     S4 
+```
+
+```r
 > # The model with lower AIC, BIC, ...
 > 
-> 
+> garch_fit@fit$ics
+```
+
+```
+      AIC       BIC       SIC      HQIC 
+-6.632898 -6.620639 -6.632910 -6.628291 
+```
+
+```r
+> garch_fit_std@fit$ics
+```
+
+```
+      AIC       BIC       SIC      HQIC 
+-6.667041 -6.650695 -6.667061 -6.660898 
+```
+
+```r
 > # Solution Exercise 4
 > vola_forecast <- function(fit, n.ahead=1) {
 +   # fit is an object of class "fGarch"

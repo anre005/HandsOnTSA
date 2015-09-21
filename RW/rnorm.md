@@ -7,9 +7,9 @@ The function `rnorm()` enables us to generate normally distributed random number
 rnorm(n, mean = 0, sd = 1)
 ```
 
-where **n** is the number of random numbers we want to generate,
-**mean** is the mean of the normal distribution and
-**sd** is the standard deviation.
+where `n` is the number of random numbers we want to generate,
+`mean` is the mean of the normal distribution and
+`sd` is the standard deviation.
 
 A function call to get 1000 normal distribution random numbers with mean 10 and standard deviation 2 would be
 

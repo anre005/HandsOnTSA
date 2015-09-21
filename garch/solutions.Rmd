@@ -33,10 +33,18 @@ acf(log_returns^2)
 # Solution Exercise 3
 garch_fit <- garchFit(formula = ~ garch(1,1), data = log_returns,
                       include.mean = FALSE, trace = FALSE)
+
+summary(garch_fit)
+
 garch_fit_std <- garchFit(formula = ~ garch(1,1), data = log_returns,
                           cond.dist = "std", include.mean = FALSE, trace = FALSE)
 
+summary(garch_fit_std)
+
 # The model with lower AIC, BIC, ...
+
+garch_fit@fit$ics
+garch_fit_std@fit$ics
 
 
 # Solution Exercise 4
