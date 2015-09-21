@@ -47,7 +47,7 @@
 ```
 
 ```
-[1]  1.319270+0i -1.493212+0i
+[1]  1.319270+0i -1.493212-0i
 ```
 
 ```r
@@ -55,11 +55,11 @@
 ```
 
 ```
-[1]  1.000006+0i -1.118498+0i
+[1]  1.000006-0i -1.118498+0i
 ```
 
 ```r
-> # No unit roots in common and all unit roots lie outside the unit circle
+> # No roots in common and all roots lie outside the unit circle
 > 
 > # Solution Exercise 3
 > predict(arma22, n.ahead = 6)

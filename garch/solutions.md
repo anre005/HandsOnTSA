@@ -73,7 +73,7 @@ Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 
 ```r
 > sp500 <- Quandl("YAHOO/INDEX_GSPC.4",
-+                 start_date = "2010-01-01", end_date = "2014-01-01",
++                 start_date = "2010-01-01", end_date = "2014-12-31",
 +                 order = "asc")
 > 
 > close_prices <- sp500[,"Close"]
@@ -120,7 +120,7 @@ Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 > 
 > 
 > # Solution Exercise 4
-> vola_forecast <- function(fit, n.ahead=1, cond.dist = c("norm", "std")) {
+> vola_forecast <- function(fit, n.ahead=1) {
 +   # fit is an object of class "fGarch"
 +   vola <- numeric(n.ahead + 1)
 +   coefs <- coef(fit)

@@ -9,5 +9,5 @@
     - Check if the best model from exercise 1 is invertible w.r.t \\(\epsilon\\) by using the `polyroot()` function.
 
 3.  **Forecasting**
-    - Predict the values of the detrended and seasonally - adjusted retailer sales time series for the next six months (for the next 12 months)
+    - Predict the values of the detrended and seasonally - adjusted retailer sales time series for the next six months (for the next 12       months)
       using the best model from exercise 1.

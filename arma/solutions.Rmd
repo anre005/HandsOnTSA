@@ -26,7 +26,7 @@ arma22@fit$aic
 polyroot(c(1, -arma22@fit$coef[c("ar1","ar2")]))
 polyroot(c(1, arma22@fit$coef[c("ma1","ma2")]))
 
-# No unit roots in common and all unit roots lie outside the unit circle
+# No roots in common and all roots lie outside the unit circle
 
 # Solution Exercise 3
 predict(arma22, n.ahead = 6)

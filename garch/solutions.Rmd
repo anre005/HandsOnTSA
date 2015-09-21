@@ -17,7 +17,7 @@ library(fGarch)
 # Solution Exercise 1
 Quandl.search("S&P 500", database_code = "YAHOO")
 sp500 <- Quandl("YAHOO/INDEX_GSPC.4",
-                start_date = "2010-01-01", end_date = "2014-01-01",
+                start_date = "2010-01-01", end_date = "2014-12-31",
                 order = "asc")
 
 close_prices <- sp500[,"Close"]
@@ -40,7 +40,7 @@ garch_fit_std <- garchFit(formula = ~ garch(1,1), data = log_returns,
 
 
 # Solution Exercise 4
-vola_forecast <- function(fit, n.ahead=1, cond.dist = c("norm", "std")) {
+vola_forecast <- function(fit, n.ahead=1) {
   # fit is an object of class "fGarch"
   vola <- numeric(n.ahead + 1)
   coefs <- coef(fit)
