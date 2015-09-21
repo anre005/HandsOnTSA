@@ -1,17 +1,17 @@
 {
-    "generator": "site",
-    "plugins": [
-        "mathjax",
-        "anchors",
-        "toggle-chapters",
-        "printlinks",
-        "github"
-    ],
-    "pluginsConfig": {
-        "fontSettings": {
-            "theme": "white",
-            "family": "serif",
-            "size": 2
-        }
-    }
+  "theme": "clarity",
+  "plugins": [
+      "mathjax",
+      "anchors",
+      "toggle-chapters",
+      "printlinks",
+      "github"
+  ],
+  "pluginsConfig": {
+      "fontSettings": {
+          "theme": "white",
+          "family": "serif",
+          "size": 2
+      }
+  }
 }
