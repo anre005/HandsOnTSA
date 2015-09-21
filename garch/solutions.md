@@ -74,14 +74,8 @@ Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 ```r
 > sp500 <- Quandl("YAHOO/INDEX_GSPC.4",
 +                 start_date = "2010-01-01", end_date = "2014-01-01",
-+                 sort = "asc")
-```
-
-```
-Warning: argument sort is deprecated; please use order instead.
-```
-
-```r
++                 order = "asc")
+> 
 > close_prices <- sp500[,"Close"]
 > 
 > # Solution Exercise 2

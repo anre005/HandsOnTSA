@@ -18,7 +18,7 @@ library(fGarch)
 Quandl.search("S&P 500", database_code = "YAHOO")
 sp500 <- Quandl("YAHOO/INDEX_GSPC.4",
                 start_date = "2010-01-01", end_date = "2014-01-01",
-                sort = "asc")
+                order = "asc")
 
 close_prices <- sp500[,"Close"]
 

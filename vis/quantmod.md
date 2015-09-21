@@ -35,14 +35,7 @@ Remember that we have the possibility to tell `Quandl()` to return the data in t
 ```r
 > bmw_2014_xts <- Quandl("GOOG/FRA_BMW",
 +                        start_date = "2014-01-01", end_date = "2014-12-31",
-+                        sort = "asc", type = "xts")
-```
-
-```
-Warning: argument sort is deprecated; please use order instead.
-```
-
-```r
++                        order = "asc", type = "xts")
 > class(bmw_2014_xts)
 ```
 
