@@ -1,6 +1,6 @@
 # Random Walk and White Noise
 
-On lecture slide 30 the definition of a random walk is given as
+On the lecture slides the definition of a random walk is given as
 
 $$
 \begin{aligned}
@@ -9,7 +9,8 @@ $$
 \end{aligned}
 $$
 
-with white noise \\(u_t\\), which means \\(E(u_t) = 0\\) and \\(Var(u_t) = \sigma_u^2\\),
+with white noise \\(u_t\\), which means \\(E(u_t) = 0\\) and \\(Var(u_t) = \sigma_u^2\\)
+and \\(Corr(u_t,u_s) = 0 \\) for \\(t \neq s\\),
 and assuming that the initial value \\(y_0\\) equals 0.
 
 The two equations above can be rewritten as a cumulative sum of white noise variates.

@@ -5,16 +5,23 @@
 The workhorse is the `Quandl()` function.
 
 ```r
-> Quandl(code, type = c("raw", "ts", "zoo", "xts", "timeSeries"), start_date,
-+        end_date, transformation = c("", "diff", "rdiff", "normalize", "cumul",
-+        "rdiff_from"), collapse = c("", "daily", "weekly", "monthly", "quarterly",
-+        "annual"), sort = c("desc", "asc"), meta = FALSE,
-+        authcode = Quandl.auth(), ...)
+> Quandl(code, type = c("raw", "ts", "zoo", "xts", "timeSeries"),
++        transform = c("", "diff", "rdiff", "normalize", "cumul", "rdiff_from"),
++        collapse = c("", "daily", "weekly", "monthly", "quarterly", "annual"),
++        order = c("desc", "asc"), meta = FALSE, force_irregular = FALSE, ...)
 ```
 
+* `code`: dataset code on Quandl specified as a string or an array of strings
+* `type`: type of data returned
+* `transform`: apply Quandl API data transformations
+* `order`: select if data returned by `R` is in ascending or descending format
+* `meta`: adds meta data as an attribute to the returned data
+* `force_irregular`: if set to `TRUE`, forces the index
+                     of the data to be of date format `yyyy-mm-dd`
+                     
 You can start downloading data by only using the `code` argument.
 Codes can be found on the website of [Quandl](https://www.quandl.com) 
-or you can query the databases directly within `R`. (see chapter 1.4).
+or you can query the databases directly within `R`. (see chapter *Querying Quandl Databases from R Console*).
 Suppose we want the data for the automobile manufacturer *BMW* from Frankfurt Stock Exchange
 using Google Finance as database.
 
