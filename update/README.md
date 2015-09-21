@@ -1,0 +1,11 @@
+# Everything Up-to-Date
+
+To ensure that everybody uses the same version of a package
+please run the following line of code in your R console,
+
+
+```r
+update.packages()
+```
+
+or hit the **Update** button in the **Packages** tab in **RStudio** IDE.

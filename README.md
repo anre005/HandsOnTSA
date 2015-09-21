@@ -7,6 +7,8 @@ September 22nd.
 
 **Book URL:** [www.gitbook.com/book/anre005/dsss2015tsa](https://www.gitbook.com/book/anre005/dsss2015tsa)
 
+**Book Sources:** [https://github.com/anre005/HandsOnTSA](https://github.com/anre005/HandsOnTSA)
+
 **Last modified at:** {{ file.mtime }}
 
 **Book built with:** GitBook {{ gitbook.version }}

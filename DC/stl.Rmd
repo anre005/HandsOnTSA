@@ -4,7 +4,8 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.he
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
 Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
-
+library(Quandl)
+Quandl.api_key("x81naq-zMUpwM9fzkhYq")
 # end setup chunk
 ```
 

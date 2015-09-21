@@ -61,5 +61,6 @@ Now we add a title to the plot, change the linetype from solid to dashed and col
 
 <img src="figure/lineplottitle-1.png" title="plot of chunk lineplottitle" alt="plot of chunk lineplottitle" style="display: block; margin: auto;" />
 
-A list about the different possible colors and linetypes can be found at the help page of `par()`
+A list about the available colors can be found [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+and the different line and shape types are presented [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/)
 in the *Graphical Parameters* section.

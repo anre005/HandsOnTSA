@@ -4,7 +4,7 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.he
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
 library(Quandl)
-Quandl.auth("x81naq-zMUpwM9fzkhYq")
+Quandl.api_key("x81naq-zMUpwM9fzkhYq")
 
 Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
 # end setup chunk
@@ -31,7 +31,7 @@ Both arguments `start_date` and `end_date` have to be in the format 'yyyy-mm-dd'
 ```{r bmw2014}
 bmw_2014 <- Quandl("GOOG/FRA_BMW",
                    start_date = "2014-01-01", end_date = "2014-12-31",
-                   sort = "asc")
+                   order = "asc")
 ```
 
 ```{r bmw20141}
@@ -67,7 +67,7 @@ To get an output with class `zoo` the function call would look like this:
 ```{r bmwzoo}
 bmw_2014_zoo <- Quandl("GOOG/FRA_BMW",
                        start_date = "2014-01-01", end_date = "2014-12-31",
-                       sort = "asc", type = "zoo")
+                       order = "asc", type = "zoo")
 ```
 
 Let's have a look at what the standard `plot` function produces for both classes.
@@ -100,7 +100,7 @@ the function call would be
 ```{r bmwweek}
 bmw_2014_zoo_weekly <- Quandl("GOOG/FRA_BMW",
                               start_date = "2014-01-01", end_date = "2014-12-31",
-                              sort = "asc", type = "zoo", collapse = "weekly")
+                              order = "asc", type = "zoo", collapse = "weekly")
 ```
 
 ```{r bmwweek1}
@@ -113,9 +113,9 @@ head(bmw_2014_zoo_weekly)
 
 It is also possible to apply various transformations to the data.
 
-Suppose we have a time series with time stamps $i = 0, \ldots, I$,
-where $x_0$ refers to the starting date for the API call specified by `start_date`
-and $x_I$ refers to the end point specified by `end_date`.
+Suppose we have a time series with time stamps \\(i = 0, \ldots, I\\),
+where \\(x_0\\) refers to the starting date for the API call specified by `start_date`
+and \\(x_I\\) refers to the end point specified by `end_date`.
 
 Possible values for the `transform` argument are
 
@@ -126,16 +126,24 @@ Possible values for the `transform` argument are
   $$
   
 * rdiff: shows the relative row - on - row change; 
-  $$ x^{*}_i = \dfrac{(x_i - x_{i-1})}{x_{i-1}} $$
+  $$
+    x^{*}_i = \dfrac{(x_i - x_{i-1})}{x_{i-1}}
+  $$
   
 * normalize: set starting value at 100; 
-  $$ x^{*}_i = \dfrac{x_i}{x_0} \cdot 100 $$
+  $$
+    x^{*}_i = \dfrac{x_i}{x_0} \cdot 100
+  $$
   
 * cumul: shows the cumulative sum; 
-  $$ x^{*}_i =  x_i + x_{i-1} + x_{i-2} + \ldots + x_0 $$
+  $$ 
+    x^{*}_i =  x_i + x_{i-1} + x_{i-2} + \ldots + x_0 
+  $$
   
 * rdiff_from: shows ratio between the latest point and an earlier point; 
-  $$ x^{*}_i = \dfrac{(x_I - x_{i})}{x_{i}} $$
+  $$ 
+    x^{*}_i = \dfrac{(x_I - x_{i})}{x_{i}} 
+  $$
 
 Furthermore, you can select single columns of the data. 
 If we want the returns of the closing prices (fourth column) of 2014 for BMW 
@@ -144,11 +152,9 @@ we have to call the Quandl function like this
 ```{r returnsclosing}
 bmw_2014_returns <- Quandl("GOOG/FRA_BMW.4",
                            start_date = "2014-01-01", end_date = "2014-12-31",
-                           sort = "asc", type = "zoo", transform = "rdiff")
+                           order = "asc", type = "zoo", transform = "rdiff")
 
-plot(bmw_2014_returns, main = "BMW closing price returns 2014",
-     ylab = "Returns", xlab = "Date")
-summary(bmw_2014_returns)
+head(bmw_2014_returns)
 ```
 
 Finally, you can also get meta data. 
@@ -158,11 +164,11 @@ from **FALSE** to **TRUE**.
 ```{r meta}
 bmw_2014_zoo_meta <- Quandl("GOOG/FRA_BMW",
                             start_date = "2014-01-01", end_date = "2014-12-31",
-                            sort = "asc", type = "zoo", meta = TRUE)
-str(bmw_2014_zoo_meta, "meta")
+                            order = "asc", type = "zoo", meta = TRUE)
+str(bmw_2014_zoo_meta)
 ```
 
-The `meta` attribute of the object `bmw_2014_zoo_meta` is a list with 9 entries, such as frequency, name, description etc. .
+The `meta` attribute of the object `bmw_2014_zoo_meta` is a list with 20 entries, such as frequency, name, description etc. .
 Assuming that we are interested in an extended description of BMW we can get this with
 
 ```{r desc, eval = FALSE}

@@ -6,7 +6,7 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup', fig.width = 12, fig.he
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
 library(Quandl)
-Quandl.auth("x81naq-zMUpwM9fzkhYq")
+Quandl.api_key("x81naq-zMUpwM9fzkhYq")
 Sys.setlocale(category = "LC_ALL", locale = "en_US.utf8")
 library(fGarch)
 # births <- Quandl("INSEE/62_001641602_M", type = "ts")
@@ -15,7 +15,7 @@ library(fGarch)
 
 ```{r}
 # Solution Exercise 1
-Quandl.search("S&P 500", source = "YAHOO")
+Quandl.search("S&P 500", database_code = "YAHOO")
 sp500 <- Quandl("YAHOO/INDEX_GSPC.4",
                 start_date = "2010-01-01", end_date = "2014-01-01",
                 sort = "asc")

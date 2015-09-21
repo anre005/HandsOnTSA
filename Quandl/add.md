@@ -7,7 +7,7 @@
 The function call `Quandl("GOOG/FRA_BMW")` without any additional arguments returns a data frame
 with six columns, namely 'Date', 'Open', 'High', 'Low', 'Close' and 'Volume' for
 all available dates. Furthermore, the data frame is returned in descending order.
-Our R object `bmw` ranges from 2011-01-03 to 2015-09-16.
+Our R object `bmw` ranges from 2011-01-03 to 2015-09-18.
 
 If you want to truncate your time series the two arguments `start_date` and `end_date`
 of the `Quandl` function can be used.
@@ -20,7 +20,7 @@ Both arguments `start_date` and `end_date` have to be in the format 'yyyy-mm-dd'
 ```r
 > bmw_2014 <- Quandl("GOOG/FRA_BMW",
 +                    start_date = "2014-01-01", end_date = "2014-12-31",
-+                    sort = "asc")
++                    order = "asc")
 ```
 
 
@@ -55,7 +55,7 @@ Both arguments `start_date` and `end_date` have to be in the format 'yyyy-mm-dd'
 ```
 
 Comparing both R objects `bmw` and `bmw_2014` we have reduced the observations for each 
-of the columns from 1195 to 252.
+of the columns from 1197 to 252.
 The dates we have data for range from 2014-01-02 to 2014-12-30.
 
 By default, `Quandl()` returns data as class `data.frame` which is not the best
@@ -80,7 +80,7 @@ To get an output with class `zoo` the function call would look like this:
 ```r
 > bmw_2014_zoo <- Quandl("GOOG/FRA_BMW",
 +                        start_date = "2014-01-01", end_date = "2014-12-31",
-+                        sort = "asc", type = "zoo")
++                        order = "asc", type = "zoo")
 ```
 
 Let's have a look at what the standard `plot` function produces for both classes.
@@ -122,7 +122,7 @@ the function call would be
 ```r
 > bmw_2014_zoo_weekly <- Quandl("GOOG/FRA_BMW",
 +                               start_date = "2014-01-01", end_date = "2014-12-31",
-+                               sort = "asc", type = "zoo", collapse = "weekly")
++                               order = "asc", type = "zoo", collapse = "weekly")
 ```
 
 
@@ -156,9 +156,9 @@ the function call would be
 
 It is also possible to apply various transformations to the data.
 
-Suppose we have a time series with time stamps $i = 0, \ldots, I$,
-where $x_0$ refers to the starting date for the API call specified by `start_date`
-and $x_I$ refers to the end point specified by `end_date`.
+Suppose we have a time series with time stamps \\(i = 0, \ldots, I\\),
+where \\(x_0\\) refers to the starting date for the API call specified by `start_date`
+and \\(x_I\\) refers to the end point specified by `end_date`.
 
 Possible values for the `transform` argument are
 
@@ -169,16 +169,24 @@ Possible values for the `transform` argument are
   $$
   
 * rdiff: shows the relative row - on - row change; 
-  $$ x^{*}_i = \dfrac{(x_i - x_{i-1})}{x_{i-1}} $$
+  $$
+    x^{*}_i = \dfrac{(x_i - x_{i-1})}{x_{i-1}}
+  $$
   
 * normalize: set starting value at 100; 
-  $$ x^{*}_i = \dfrac{x_i}{x_0} \cdot 100 $$
+  $$
+    x^{*}_i = \dfrac{x_i}{x_0} \cdot 100
+  $$
   
 * cumul: shows the cumulative sum; 
-  $$ x^{*}_i =  x_i + x_{i-1} + x_{i-2} + \ldots + x_0 $$
+  $$ 
+    x^{*}_i =  x_i + x_{i-1} + x_{i-2} + \ldots + x_0 
+  $$
   
 * rdiff_from: shows ratio between the latest point and an earlier point; 
-  $$ x^{*}_i = \dfrac{(x_I - x_{i})}{x_{i}} $$
+  $$ 
+    x^{*}_i = \dfrac{(x_I - x_{i})}{x_{i}} 
+  $$
 
 Furthermore, you can select single columns of the data. 
 If we want the returns of the closing prices (fourth column) of 2014 for BMW 
@@ -188,26 +196,16 @@ we have to call the Quandl function like this
 ```r
 > bmw_2014_returns <- Quandl("GOOG/FRA_BMW.4",
 +                            start_date = "2014-01-01", end_date = "2014-12-31",
-+                            sort = "asc", type = "zoo", transform = "rdiff")
++                            order = "asc", type = "zoo", transform = "rdiff")
 > 
-> plot(bmw_2014_returns, main = "BMW closing price returns 2014",
-+      ylab = "Returns", xlab = "Date")
-```
-
-<img src="figure/returnsclosing-1.png" title="plot of chunk returnsclosing" alt="plot of chunk returnsclosing" style="display: block; margin: auto;" />
-
-```r
-> summary(bmw_2014_returns)
+> head(bmw_2014_returns)
 ```
 
 ```
-     Index            bmw_2014_returns    
- Min.   :2014-01-03   Min.   :-0.0387704  
- 1st Qu.:2014-04-01   1st Qu.:-0.0078668  
- Median :2014-07-02   Median : 0.0006620  
- Mean   :2014-07-01   Mean   : 0.0003888  
- 3rd Qu.:2014-09-27   3rd Qu.: 0.0084222  
- Max.   :2014-12-30   Max.   : 0.0606808  
+  2014-01-03   2014-01-06   2014-01-07   2014-01-08   2014-01-09 
+ 0.005865454 -0.009996430  0.004928477  0.010287081 -0.003315179 
+  2014-01-10 
+-0.006296032 
 ```
 
 Finally, you can also get meta data. 
@@ -218,8 +216,8 @@ from **FALSE** to **TRUE**.
 ```r
 > bmw_2014_zoo_meta <- Quandl("GOOG/FRA_BMW",
 +                             start_date = "2014-01-01", end_date = "2014-12-31",
-+                             sort = "asc", type = "zoo", meta = TRUE)
-> str(bmw_2014_zoo_meta, "meta")
++                             order = "asc", type = "zoo", meta = TRUE)
+> str(bmw_2014_zoo_meta)
 ```
 
 ```
@@ -228,20 +226,31 @@ from **FALSE** to **TRUE**.
  - attr(*, "dimnames")=List of 2
   ..$ : NULL
   ..$ : chr [1:5] "Open" "High" "Low" "Close" ...
- - attr(*, "meta")=List of 9
-  ..$ frequency         : chr "daily"
-  ..$ name              : chr "Bayerische Motoren Werke AG (BMW)"
-  ..$ description       : chr "Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that focuses on the automobile and motorcyc"| __truncated__
-  ..$ updated           : chr "2015-09-17T03:40:23.790Z"
-  ..$ source_code       : chr "GOOG"
-  ..$ code              : chr "GOOG/FRA_BMW"
-  ..$ source_name       : chr "Google Finance"
-  ..$ source_link       : chr "www.google.com"
-  ..$ source_description: chr "This data is NOT sourced directly from Google.  It is however verified against their numbers.\r\n\r\nwww.quandl.com/WIKI is a b"| __truncated__
+ - attr(*, "meta")=List of 20
+  ..$ id                   : int 6269390
+  ..$ dataset_code         : chr "FRA_BMW"
+  ..$ database_code        : chr "GOOG"
+  ..$ name                 : chr "Bayerische Motoren Werke AG (BMW)"
+  ..$ description          : chr "Bayerische Motoren Werke AG is a German holding company and automobile manufacturer that focuses on the automobile and motorcyc"| __truncated__
+  ..$ refreshed_at         : chr "2015-09-19T04:20:43.065Z"
+  ..$ newest_available_date: chr "2015-09-18"
+  ..$ oldest_available_date: chr "2011-01-03"
+  ..$ column_names         : chr [1:6] "Date" "Open" "High" "Low" ...
+  ..$ frequency            : chr "daily"
+  ..$ type                 : chr "Time Series"
+  ..$ premium              : logi FALSE
+  ..$ limit                : NULL
+  ..$ transform            : NULL
+  ..$ column_index         : NULL
+  ..$ start_date           : chr "2014-01-01"
+  ..$ end_date             : chr "2014-12-31"
+  ..$ collapse             : NULL
+  ..$ order                : chr "asc"
+  ..$ database_id          : int 393
   Index:  Date[1:252], format: "2014-01-02" "2014-01-03" "2014-01-06" "2014-01-07" ...
 ```
 
-The `meta` attribute of the object `bmw_2014_zoo_meta` is a list with 9 entries, such as frequency, name, description etc. .
+The `meta` attribute of the object `bmw_2014_zoo_meta` is a list with 20 entries, such as frequency, name, description etc. .
 Assuming that we are interested in an extended description of BMW we can get this with
 
 

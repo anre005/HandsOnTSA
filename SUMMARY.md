@@ -1,6 +1,6 @@
 # TOC
 Table of Contents
-
+* [Everything Up-to-Date](update/README.md)
 * [Quandl](Quandl/README.md)
     * [Access Quandl Databases](Quandl/Quandlacc.md)
     * [Installation and Authentication](Quandl/Quandlauth.md)

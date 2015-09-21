@@ -5,34 +5,83 @@
 
 ```r
 > # Solution Exercise 1
-> Quandl.search("S&P 500", source = "YAHOO")
+> Quandl.search("S&P 500", database_code = "YAHOO")
 ```
 
 ```
-S: Sprint Corporation Common Stock -
-Code: YAHOO/S
-Desc: Exchange : . Key Statistics
+SPDR S&P 500 (SPY)
+Code: YAHOO/INDEX_SPY
+Desc: SPY: SPDR S&P 500 (SPY)
 Freq: daily
-Cols: c("Date", "Open", "High", "Low", "Close", "Volume", "Adjusted Close")
+Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 
-SPLI: AVWORKS AVIATION -
-Code: YAHOO/SPLI
-Desc: Exchange : . Key Statistics
+S&P 500 Index
+Code: YAHOO/INDEX_GSPC
+Desc: GSPC: S&P 500 Index. The S&P 500, or the Standard & Poor's 500, is an American stock market index based on the market capitalizations of 500 large companies having common stock listed on the NYSE or NASDAQ.
 Freq: daily
-Cols: c("Date", "Open", "High", "Low", "Close", "Volume", "Adjusted Close")
+Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 
-SCBT: First Financial Holdings, Inc. -
-Code: YAHOO/SCBT
-Desc: Exchange : . Key Statistics
+S27: SPDR S&P500 10US$
+Code: YAHOO/SI_S27
+Desc:  Currency: SGD
 Freq: daily
-Cols: c("Date", "Open", "High", "Low", "Close", "Volume", "Adjusted Close")
+Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
+
+I17: IS S&P500 10US$
+Code: YAHOO/SI_I17
+Desc: There is no Profile data available for I17.SI. Currency: SGD
+Freq: daily
+Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
+
+MDSRX: Blackrock S&P 500 Index A
+Code: YAHOO/FUND_MDSRX
+Desc: The investment seeks to match the performance of the Standard & Poor&#39;sÂ® 500 Index (the 'S&P 500') as closely as possible before the deduction of fund expenses.
+ The fund is a 'feeder' fund that invests all of its assets in Master S&P 500 Index Series of Quantitative Master Series LLC, which has the same investment objective and strategies as the fund. It will be substantially invested in securities in the S&P 500, and will invest, under normal circumstances, at least 80% of its assets in securities or other financial instruments that are components of or have economic characteristics similar to the securities included in the S&P 500.
+Freq: daily
+Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
+
+S&P 500 Dividend Aristocrats (^SPDAUDP)
+Code: YAHOO/SPDAUDP
+Desc: This dataset has no description.
+Freq: daily
+Cols: Date | Open | High | Low | Close
+
+S&P 500 Managed Distribution In (^SPXMDUT)
+Code: YAHOO/SPXMDUT
+Desc: This dataset has no description.
+Freq: daily
+Cols: Date | Open | High | Low | Close
+
+S&P 500 Dividend Aristocrats (T (^SPDAUDT)
+Code: YAHOO/SPDAUDT
+Desc: This dataset has no description.
+Freq: daily
+Cols: Date | Open | High | Low | Close
+
+S&P 500 Managed Distribution In (^SPXMDUP)
+Code: YAHOO/SPXMDUP
+Desc: This dataset has no description.
+Freq: daily
+Cols: Date | Open | High | Low | Close
+
+Ishares S&P 500 (IVV.AX)
+Code: YAHOO/ASX_IVV_AX
+Desc: Historical stock prices for Ishares S&P 500 (IVV.AX). The fund invests at least 90% of assets in S&P 500 index securities. The index measures the performance of the large-capitalization sector of the U.S. equity market. As of May 31, 2010, the index included approximately 75% of the market capitalization of all publicly-traded U.S. equity securities.
+Freq: daily
+Cols: Date | Open | High | Low | Close | Volume | Adjusted Close
 ```
 
 ```r
 > sp500 <- Quandl("YAHOO/INDEX_GSPC.4",
 +                 start_date = "2010-01-01", end_date = "2014-01-01",
 +                 sort = "asc")
-> 
+```
+
+```
+Warning: argument sort is deprecated; please use order instead.
+```
+
+```r
 > close_prices <- sp500[,"Close"]
 > 
 > # Solution Exercise 2

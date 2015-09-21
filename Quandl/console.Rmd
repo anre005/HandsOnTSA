@@ -4,20 +4,26 @@ or you can use the `Quandl.search()` function.
 It has only one mandatory argument `query` which you have to use to enter your search term.
 Optional arguments of `Quandl.search()` are 
 
-* `page`: specifies which page of the search results should be returned
-* `source`: allows the user to specify a database which should be queried
-* `silent`: if set to **FALSE** first three results are printed to the console
-* `authcode`: if not set before with `Quandl.auth` function you can enter your API token here
+* `per_page`: specifies the number of results returned per page
+* `silent`: if set to **FALSE** results are printed to the console
+* `...` : additional named arguments which are interpretted as Quandl API parameters.
 
-An example call to `Quandl.search()` to find historical data for International Business Machines (IBM) by using
+We have to look in the [Quandl API documentation](https://www.quandl.com/docs/api) to see which
+additional arguments can be used.
+For example, we can set the database we want to get results from with the 
+`database_code` argument.
+
+A function call to `Quandl.search()` for finding historical data for International Business Machines (IBM) by using
 the Yahoo Finance Database is given below.
 
 ```{r yahoo}
-ibm <- Quandl.search("IBM", source = "YAHOO", silent = TRUE)
+ibm <- Quandl.search("IBM", silent = TRUE, database_code = "YAHOO")
 ```
 
-The API call above returns a list of length 16 where the code needed for `Quandl` function and several other details can be extracted.
+The API call above returns a `data.frame` with the following column names.
 
-```{r yahooibm}
-str(ibm)
+```{r colnames}
+colnames(ibm)
 ```
+
+The code which can be used with the `Quandl()` function is a string with the structure `database_code`/`dataset_code`.

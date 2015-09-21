@@ -55,5 +55,6 @@ plot(x = bmw_2014[,"Date"], y = bmw_2014[,"Close"],
      main = "Closing Prices BMW 2014", lty = "dashed", col = "red")
 ```
 
-A list about the different possible colors and linetypes can be found at the help page of `par()`
+A list about the available colors can be found [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+and the different line and shape types are presented [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/)
 in the *Graphical Parameters* section.
