@@ -30,12 +30,12 @@ arma11@fit$aic
 arma22@fit$aic
 
 # Solution Exercise 2
+predict(arma22, n.ahead = 6)
+predict(arma22, n.ahead = 12)
+
+# Solution Exercise 3
 polyroot(c(1, -arma22@fit$coef[c("ar1","ar2")]))
 polyroot(c(1, arma22@fit$coef[c("ma1","ma2")]))
 
 # No roots in common and all roots lie outside the unit circle
-
-# Solution Exercise 3
-predict(arma22, n.ahead = 6)
-predict(arma22, n.ahead = 12)
 ```

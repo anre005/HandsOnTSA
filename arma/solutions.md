@@ -43,25 +43,6 @@
 
 ```r
 > # Solution Exercise 2
-> polyroot(c(1, -arma22@fit$coef[c("ar1","ar2")]))
-```
-
-```
-[1]  1.319270+0i -1.493212+0i
-```
-
-```r
-> polyroot(c(1, arma22@fit$coef[c("ma1","ma2")]))
-```
-
-```
-[1]  1.000006+0i -1.118498+0i
-```
-
-```r
-> # No roots in common and all roots lie outside the unit circle
-> 
-> # Solution Exercise 3
 > predict(arma22, n.ahead = 6)
 ```
 
@@ -138,4 +119,25 @@ Frequency = 1
 291 -11073.869 -7302.163  -177.2397 6947.683 10719.390
 292 -10960.936 -7187.833   -60.2701 7067.292 10840.396
 293 -10996.113 -7222.764   -94.7378 7033.288 10806.637
+```
+
+```r
+> # Solution Exercise 3
+> polyroot(c(1, -arma22@fit$coef[c("ar1","ar2")]))
+```
+
+```
+[1]  1.319270+0i -1.493212+0i
+```
+
+```r
+> polyroot(c(1, arma22@fit$coef[c("ma1","ma2")]))
+```
+
+```
+[1]  1.000006+0i -1.118498+0i
+```
+
+```r
+> # No roots in common and all roots lie outside the unit circle
 ```
